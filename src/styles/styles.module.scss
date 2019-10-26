@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,700&display=swap");
+body {
+    background: #303841;
+    font-family: "Montserrat";
+    padding: 0;
+    margin: 0;
+}
+
+.app {
+    width: 1200px;
+    margin: auto;
+    color: white;
+}
+
+.tableContainerGreen {
+    color: white;
+    width: 1200px;
+    margin: auto;
+    background: rgb(9, 121, 16);
+    background: linear-gradient(
+        90deg,
+        rgba(9, 121, 16, 1) 0%,
+        rgba(9, 121, 16, 1) 0%,
+        rgba(48, 56, 65, 1) 30%
+    );
+    padding-top: 5px;
+}
+
+.tableContainerRed {
+    color: white;
+    width: 1200px;
+    margin: auto;
+    background: red;
+    background: linear-gradient(90deg, red 0%, red 0%, rgba(48, 56, 65, 1) 30%);
+    padding-top: 5px;
+}
+
+.hero-img {
+    height: 100px;
+    width: 100px;
+}
+
+table {
+    text-align: left;
+    margin: auto;
+    width: 1200px;
+    -webkit-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.16);
+    -moz-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.16);
+    box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.16);
+
+    tbody {
+        margin: 0 0 20px 0;
+        background: #3a4750;
+    }
+
+    th {
+        font-weight: 500;
+        padding: 15px;
+        margin: 0;
+        font-size: 13px;
+    }
+
+    tr {
+        background: #3a4750;
+        font-weight: 300;
+        font-size: 13px;
+        margin: 0;
+
+        &:hover {
+            background: #303841;
+            opacity: 0.9;
+        }
+    }
+
+    // tr:nth-child(even){
+    //   background-color: #303841;
+
+    // }
+
+    td {
+        padding: 15px;
+        margin: 0;
+    }
+}
