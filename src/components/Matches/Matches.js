@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { UserContext } from "../UserContext/UserContext";
 import { Link } from "react-router-dom";
+import { handleImg } from '../../utils/functions';
 
 const Matches = () => {
     const [matches, setMatches] = useState([]);
@@ -29,14 +30,18 @@ const Matches = () => {
             <tr key={match.match_id}>
                 <td style={{ paddingRight: "10px", textAlign: "right" }}>
                     <div classname="hero-img">
-                        {/* <img style={{ height: "30px" }} src={handleImg(player.hero_id)} alt="" /> */}
+                        <img style={{ height: "30px" }} src={handleImg(match.hero_id)} alt="" />
                         <Link to={`/match-page/${match.match_id}`}><b>{match.match_id}</b ></Link>
+                        <span> Lane: {match.lane}</span>
                     </div>
 
                 </td>
                 <td style={{ fontWeight: 700, paddingLeft: 0 }}>
-                    {match.radiant_win}
-                    Result
+                    Result: {match.radiant_win}
+                    <br />
+                    Game Mode:  {match.game_mode}
+                    <br />
+                    Party Size: {match.party_size}
                 </td>
 
                 <td>
@@ -75,18 +80,6 @@ const Matches = () => {
         return (
             <div>
                 Matches{console.log("matches", matches)}
-                {/* <ul>
-                    {matches.map(match => {
-                        return (
-                            <li key={match.match_id}>
-                                <Link to={`/match-page/${match.match_id}`}><b>{"Match ID: "}</b ></Link>
-                                {match.match_id}
-                                <b>{" hero ID: "}</b>
-                                {match.hero_id}
-                            </li>
-                        );
-                    })}
-                </ul> */}
                 {tableContainer(handleMatches())}
             </div>
         );

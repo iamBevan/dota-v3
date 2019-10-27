@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "../../styles/styles.module.scss";
-import { heroData } from "../../constants/heroData";
 import { useParams } from "react-router-dom";
-
-export const handleImg = heroId => {
-    const url = heroData.heroes[heroId].img;
-    const fullUrl = `https://api.opendota.com${url}`;
-    return fullUrl;
-};
+import { handleImg } from '../../utils/functions'
 
 const MatchPage = () => {
     const [load, setLoad] = useState(false);
