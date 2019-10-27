@@ -5,6 +5,7 @@ import HomePage from "../HomePage/HomePage";
 import Matches from "../Matches/Matches";
 import { UserContext } from "../UserContext/UserContext";
 import MatchPage from '../MatchPage/MatchPage'
+import '../../styles/styles.module.scss';
 
 const App = () => {
     const [steamId, setSteamId] = useState(311360822);
