@@ -78,13 +78,6 @@ const HomePage = () => {
     if (load && player !== null && playerWl !== null) {
         return (
             <div className="homepage-container">
-                {console.log("playerWl: ", playerWl)}
-                {console.log("player win: ", playerWl.win)}
-                {console.log("player loss: ", playerWl.lose)}
-                {console.log(
-                    "playerWlRatio: ",
-                    winRate(playerWl.win, playerWl.lose)
-                )}
                 <div className="player">
                     <div>
                         <h1>{player.profile.personaname}</h1>
@@ -93,7 +86,11 @@ const HomePage = () => {
                             alt=""
                             src={player.profile.avatarmedium}
                         />
-                        <div></div>
+                        <div>Wins: {playerWl.win}</div>
+                        <div>Losses: {playerWl.lose}</div>
+                        <div>
+                            Win Rate: {winRate(playerWl.win, playerWl.lose)}%
+                        </div>
                     </div>
                 </div>
                 {/* {console.log("player: ", player)} */}
