@@ -64,6 +64,14 @@ const HomePage = () => {
                 setPlayerWl(res.data);
                 setLoad(true);
             });
+
+        const cleanup = () => {
+            setPlayer(null);
+            setLoad(false);
+            console.log("homepage cleanup");
+        };
+
+        return cleanup;
     }, []);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {

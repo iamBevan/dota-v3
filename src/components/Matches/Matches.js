@@ -23,6 +23,14 @@ const Matches = () => {
                 setMatches(res.data);
                 setLoad(true);
             });
+
+        const cleanup = () => {
+            setMatches(null);
+            setLoad(false);
+            console.log("matches cleanup");
+        };
+
+        return cleanup;
     }, []);
 
     const handleMatches = () => {

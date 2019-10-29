@@ -17,6 +17,13 @@ const MatchPage = () => {
                 setMatch(res.data);
                 setLoad(true);
             });
+        const cleanup = () => {
+            setMatch(null);
+            setLoad(false);
+            console.log("matchpage cleanup");
+        };
+
+        return cleanup;
     }, [id]);
 
 
