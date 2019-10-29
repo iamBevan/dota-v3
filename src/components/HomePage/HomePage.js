@@ -1,20 +1,20 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { UserContext } from "../UserContext/UserContext";
 import './styles.scss';
+
+let steamId = 87430370;
 
 const HomePage = () => {
     const [player, setPlayer] = useState([]);
     const [load, setLoad] = useState(false);
     const [inputChange, setInputChange] = useState("");
-    const { steamId, setSteamId } = useContext(UserContext);
 
     useEffect(() => {
         axios.get(`https://api.opendota.com/api/players/${steamId}`).then(res => {
             setPlayer(res.data);
             setLoad(true);
         });
-    }, [steamId]);
+    }, []);
 
     const handleInputChange = event => {
         setInputChange(event.target.value);
@@ -22,7 +22,7 @@ const HomePage = () => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        setSteamId(inputChange);
+        // setSteamId(inputChange);
     };
 
     if (load) {

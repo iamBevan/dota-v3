@@ -1,13 +1,20 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { UserContext } from "../UserContext/UserContext";
 import { Link } from "react-router-dom";
-import { handleImg } from '../../utils/functions';
+import './styles.scss'
+import {
+    handleImg,
+    handleLaneImg,
+    matchDuration,
+    handleGameMode,
+    heroName
+} from '../../utils/functions';
+
+let steamId = 87430370;
 
 const Matches = () => {
     const [matches, setMatches] = useState([]);
     const [load, setLoad] = useState(false);
-    const { steamId } = useContext(UserContext);
 
     useEffect(() => {
         axios
@@ -16,7 +23,7 @@ const Matches = () => {
                 setMatches(res.data);
                 setLoad(true);
             });
-    }, [steamId]);
+    }, []);
 
     const handleMatches = () => {
         const playerLine = matches.map(match => {
@@ -28,27 +35,25 @@ const Matches = () => {
     const matchesTable = match => {
         return (
             <tr key={match.match_id}>
-                <td style={{ paddingRight: "10px", textAlign: "right" }}>
+                <td style={{ paddingRight: "10px", textAlign: "left" }}>
                     <div classname="hero-img">
                         <img style={{ height: "30px" }} src={handleImg(match.hero_id)} alt="" />
-                        <Link to={`/match-page/${match.match_id}`}><b>{match.match_id}</b ></Link>
-                        <span> Lane: {match.lane}</span>
+                        <Link to={`/match-page/${match.match_id}`}><b>{heroName(match.hero_id)}</b ></Link>
+                        <span><img alt="" style={{ height: '15px' }} src={handleLaneImg(match.lane)} /></span>
                     </div>
 
                 </td>
                 <td style={{ fontWeight: 700, paddingLeft: 0 }}>
                     Result: {match.radiant_win}
                     <br />
-                    Game Mode:  {match.game_mode}
-                    <br />
-                    Party Size: {match.party_size}
+                    x{match.party_size}
                 </td>
 
                 <td>
-                    {match.duration}
+                    {matchDuration(match.duration)}
                 </td>
                 <td>
-                    {match.game_mode}
+                    {handleGameMode(match.game_mode)}
                 </td>
                 <td style={{ color: "rgb(118, 173, 121)" }}>{match.kills}</td>
                 <td style={{ color: "rgb(237, 94, 94)" }}>{match.deaths}</td>
@@ -60,7 +65,7 @@ const Matches = () => {
     const tableContainer = (table, teamColour) => {
         return (
             <div>
-                <table cellspacing="0" cellpadding="0">
+                <table cellSpacing="0" cellPadding="0">
                     <tr>
                         <th>HERO</th>
                         <th>RESULT</th>
@@ -78,7 +83,7 @@ const Matches = () => {
 
     if (load) {
         return (
-            <div>
+            <div className="recentMatches-container">
                 Matches{console.log("matches", matches)}
                 {tableContainer(handleMatches())}
             </div>

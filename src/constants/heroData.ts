@@ -1,4 +1,6 @@
-export const heroData = {
+import { HeroDataList } from "./interface";
+
+export const heroData: HeroDataList = {
     heroes: {
         "1": {
             id: 1,
@@ -471,7 +473,14 @@ export const heroData = {
             localized_name: "Sand King",
             primary_attr: "str",
             attack_type: "Melee",
-            roles: ["Initiator", "Disabler", "Support", "Nuker", "Escape", "Jungler"],
+            roles: [
+                "Initiator",
+                "Disabler",
+                "Support",
+                "Nuker",
+                "Escape",
+                "Jungler"
+            ],
             img: "/apps/dota2/images/heroes/sand_king_full.png?",
             icon: "/apps/dota2/images/heroes/sand_king_icon.png",
             base_health: 200,
@@ -564,7 +573,14 @@ export const heroData = {
             localized_name: "Tiny",
             primary_attr: "str",
             attack_type: "Melee",
-            roles: ["Carry", "Nuker", "Pusher", "Initiator", "Durable", "Disabler"],
+            roles: [
+                "Carry",
+                "Nuker",
+                "Pusher",
+                "Initiator",
+                "Durable",
+                "Disabler"
+            ],
             img: "/apps/dota2/images/heroes/tiny_full.png?",
             icon: "/apps/dota2/images/heroes/tiny_icon.png",
             base_health: 200,
@@ -688,7 +704,14 @@ export const heroData = {
             localized_name: "Kunkka",
             primary_attr: "str",
             attack_type: "Melee",
-            roles: ["Carry", "Support", "Disabler", "Initiator", "Durable", "Nuker"],
+            roles: [
+                "Carry",
+                "Support",
+                "Disabler",
+                "Initiator",
+                "Durable",
+                "Nuker"
+            ],
             img: "/apps/dota2/images/heroes/kunkka_full.png?",
             icon: "/apps/dota2/images/heroes/kunkka_icon.png",
             base_health: 200,
@@ -1463,7 +1486,14 @@ export const heroData = {
             localized_name: "Dragon Knight",
             primary_attr: "str",
             attack_type: "Melee",
-            roles: ["Carry", "Pusher", "Durable", "Disabler", "Initiator", "Nuker"],
+            roles: [
+                "Carry",
+                "Pusher",
+                "Durable",
+                "Disabler",
+                "Initiator",
+                "Nuker"
+            ],
             img: "/apps/dota2/images/heroes/dragon_knight_full.png?",
             icon: "/apps/dota2/images/heroes/dragon_knight_icon.png",
             base_health: 200,
@@ -2207,7 +2237,14 @@ export const heroData = {
             localized_name: "Alchemist",
             primary_attr: "str",
             attack_type: "Melee",
-            roles: ["Carry", "Support", "Durable", "Disabler", "Initiator", "Nuker"],
+            roles: [
+                "Carry",
+                "Support",
+                "Durable",
+                "Disabler",
+                "Initiator",
+                "Nuker"
+            ],
             img: "/apps/dota2/images/heroes/alchemist_full.png?",
             icon: "/apps/dota2/images/heroes/alchemist_icon.png",
             base_health: 200,
@@ -2486,7 +2523,14 @@ export const heroData = {
             localized_name: "Meepo",
             primary_attr: "agi",
             attack_type: "Melee",
-            roles: ["Carry", "Escape", "Nuker", "Disabler", "Initiator", "Pusher"],
+            roles: [
+                "Carry",
+                "Escape",
+                "Nuker",
+                "Disabler",
+                "Initiator",
+                "Pusher"
+            ],
             img: "/apps/dota2/images/heroes/meepo_full.png?",
             icon: "/apps/dota2/images/heroes/meepo_icon.png",
             base_health: 200,
@@ -2703,7 +2747,14 @@ export const heroData = {
             localized_name: "Naga Siren",
             primary_attr: "agi",
             attack_type: "Melee",
-            roles: ["Carry", "Support", "Pusher", "Disabler", "Initiator", "Escape"],
+            roles: [
+                "Carry",
+                "Support",
+                "Pusher",
+                "Disabler",
+                "Initiator",
+                "Escape"
+            ],
             img: "/apps/dota2/images/heroes/naga_siren_full.png?",
             icon: "/apps/dota2/images/heroes/naga_siren_icon.png",
             base_health: 200,
@@ -3540,7 +3591,14 @@ export const heroData = {
             localized_name: "Pangolier",
             primary_attr: "agi",
             attack_type: "Melee",
-            roles: ["Carry", "Nuker", "Disabler", "Durable", "Escape", "Initiator"],
+            roles: [
+                "Carry",
+                "Nuker",
+                "Disabler",
+                "Durable",
+                "Escape",
+                "Initiator"
+            ],
             img: "/apps/dota2/images/heroes/pangolier_full.png?",
             icon: "/apps/dota2/images/heroes/pangolier_icon.png",
             base_health: 200,

@@ -37,6 +37,26 @@ body {
 body {
     margin: auto;
     width: 1200px;
+
+    a:link {
+        text-decoration: none;
+        height: 60px;
+        margin: 0 2px 0 2px;
+        color: white;
+    }
+
+    a:visited {
+        text-decoration: none;
+        color: white;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    a:active {
+        text-decoration: underline;
+    }
 }
 
 .hero-img {

@@ -1,11 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import './styles.scss';
+import "./styles.scss";
 
-const Header = ({ children }) => (
+const Header = () => (
     <header>
         <nav>
-            <NavLink to="/" exact>Home</NavLink>
+            <NavLink to="/" exact>
+                Home
+            </NavLink>
             <NavLink to="/matches">Matches</NavLink>
         </nav>
     </header>

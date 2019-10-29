@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+// import { Link } from "react-router-dom";
 import axios from "axios";
 import styles from "../../styles/styles.module.scss";
 import { useParams } from "react-router-dom";
@@ -35,10 +36,11 @@ const MatchPage = () => {
                     <div classname="hero-img">
                         <img style={{ height: "30px" }} src={handleImg(player.hero_id)} alt="" />
                     </div>
-
                 </td>
                 <td style={{ fontWeight: 700, paddingLeft: 0 }}>
                     {player.personaname}
+                    {/* <Link onClick={setSteamId(player.account_id)} to={`/`}>{player.personaname}</Link> */}
+                    {console.log(player.account_id)}
                 </td>
                 <td>{player.level}</td>
                 <td style={{ color: "rgb(118, 173, 121)" }}>{player.kills}</td>
