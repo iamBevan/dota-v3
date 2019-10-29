@@ -34,31 +34,33 @@ const Matches = () => {
 
     const matchesTable = match => {
         return (
-            <tr key={match.match_id}>
-                <td style={{ paddingRight: "10px", textAlign: "left" }}>
-                    <div classname="hero-img">
-                        <img style={{ height: "30px" }} src={handleImg(match.hero_id)} alt="" />
-                        <Link to={`/match-page/${match.match_id}`}><b>{heroName(match.hero_id)}</b ></Link>
-                        <span><img alt="" style={{ height: '15px' }} src={handleLaneImg(match.lane)} /></span>
-                    </div>
+            <tbody key={match.match_id}>
+                <tr>
+                    <td style={{ paddingRight: "10px", textAlign: "left" }}>
+                        <div className="hero-img">
+                            <img style={{ height: "30px" }} src={handleImg(match.hero_id)} alt="" />
+                            <Link to={`/match-page/${match.match_id}`}><b>{heroName(match.hero_id)}</b ></Link>
+                            <span><img alt="" style={{ height: '15px' }} src={handleLaneImg(match.lane)} /></span>
+                        </div>
 
-                </td>
-                <td style={{ fontWeight: 700, paddingLeft: 0 }}>
-                    Result: {match.radiant_win}
-                    <br />
-                    x{match.party_size}
-                </td>
+                    </td>
+                    <td style={{ fontWeight: 700, paddingLeft: 0 }}>
+                        Result: {match.radiant_win}
+                        <br />
+                        x{match.party_size}
+                    </td>
 
-                <td>
-                    {matchDuration(match.duration)}
-                </td>
-                <td>
-                    {handleGameMode(match.game_mode)}
-                </td>
-                <td style={{ color: "rgb(118, 173, 121)" }}>{match.kills}</td>
-                <td style={{ color: "rgb(237, 94, 94)" }}>{match.deaths}</td>
-                <td style={{ color: "rgb(124, 153, 168)" }}>{match.assists}</td>
-            </tr>
+                    <td>
+                        {matchDuration(match.duration)}
+                    </td>
+                    <td>
+                        {handleGameMode(match.game_mode)}
+                    </td>
+                    <td style={{ color: "rgb(118, 173, 121)" }}>{match.kills}</td>
+                    <td style={{ color: "rgb(237, 94, 94)" }}>{match.deaths}</td>
+                    <td style={{ color: "rgb(124, 153, 168)" }}>{match.assists}</td>
+                </tr>
+            </tbody >
         );
     };
 
@@ -66,15 +68,17 @@ const Matches = () => {
         return (
             <div>
                 <table cellSpacing="0" cellPadding="0">
-                    <tr>
-                        <th>HERO</th>
-                        <th>RESULT</th>
-                        <th>DURATION</th>
-                        <th>GAME MODE</th>
-                        <th style={{ color: "rgb(118, 173, 121)" }}>K</th>
-                        <th style={{ color: "rgb(237, 94, 94)" }}>D</th>
-                        <th style={{ color: "rgb(124, 153, 168)" }}>A</th>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <th>HERO</th>
+                            <th>RESULT</th>
+                            <th>DURATION</th>
+                            <th>GAME MODE</th>
+                            <th style={{ color: "rgb(118, 173, 121)" }}>K</th>
+                            <th style={{ color: "rgb(237, 94, 94)" }}>D</th>
+                            <th style={{ color: "rgb(124, 153, 168)" }}>A</th>
+                        </tr>
+                    </tbody>
                     {table}
                 </table>
             </div>
