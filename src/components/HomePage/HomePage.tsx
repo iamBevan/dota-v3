@@ -86,38 +86,44 @@ const HomePage = () => {
     if (load && player !== null && playerWl !== null) {
         return (
             <div className="homepage-container">
-                <div className="player">
-                    <div>
+                <div className="item1">
+                    <form onSubmit={handleSubmit}>
+                        <label>
+                            Enter your Steam ID:{" "}
+                            <input
+                                type="text"
+                                value={inputChange}
+                                onChange={handleInputChange}
+                            />{" "}
+                        </label>
+                        <input type="submit" value="Submit" />
+                    </form>
+                    <span>
+                        Or try one of these:{" "}
+                        <span>62716984 160226 2078533</span>
+                    </span>
+                </div>
+                <div className="item2">
+                    <section className="player">
                         <h1>{player.profile.personaname}</h1>
                         <img
                             style={{ width: 90 }}
                             alt=""
                             src={player.profile.avatarmedium}
                         />
-                        <div>Wins: {playerWl.win}</div>
-                        <div>Losses: {playerWl.lose}</div>
-                        <div>
-                            Win Rate: {winRate(playerWl.win, playerWl.lose)}%
-                        </div>
-                    </div>
-                </div>
-                {/* {console.log("player: ", player)} */}
-                <h2>62716984</h2>
-                <h2>160226</h2>
-                <h2>2078533</h2>
-                <form onSubmit={handleSubmit}>
-                    <label>
-                        Steam ID:
                         <br />
-                        <input
-                            type="text"
-                            value={inputChange}
-                            onChange={handleInputChange}
-                        />
-                    </label>
-                    <br />
-                    <input type="submit" value="Submit" />
-                </form>
+                        <br />
+                        <span>Wins: {playerWl.win} |</span>
+                        <span> Losses: {playerWl.lose} |</span>
+                        <span>
+                            {" "}
+                            Win Rate: {winRate(playerWl.win, playerWl.lose)}%
+                        </span>
+                    </section>
+                </div>
+                <div className="item3">Main</div>
+                <div className="item4">Right</div>
+                <div className="item5">Footer</div>
             </div>
         );
     } else {
