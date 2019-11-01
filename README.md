@@ -12,7 +12,7 @@
 -   Axios
 -   Open [Dota API and Documentation](https://docs.opendota.com/)
 
-### `git clone https://github.com/iamBevan/dota-app-v2.git`
+### `git clone https://github.com/iamBevan/dota-v3.git`
 
 ### `npm install`
 
