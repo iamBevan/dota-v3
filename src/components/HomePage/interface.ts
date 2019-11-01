@@ -27,3 +27,8 @@ export interface Player {
     };
     profile: Profile;
 }
+
+export interface PlayerWl {
+    win: number;
+    lose: number;
+}

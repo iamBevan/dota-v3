@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import './styles.scss'
 import {
     handleImg,
@@ -13,12 +13,15 @@ import {
 let steamId = 87430370;
 
 const Matches = () => {
+
+    let { id } = useParams();
+
     const [matches, setMatches] = useState([]);
     const [load, setLoad] = useState(false);
 
     useEffect(() => {
         axios
-            .get(`https://api.opendota.com/api/players/${steamId}/recentMatches`)
+            .get(`https://api.opendota.com/api/players/${id}/recentMatches`)
             .then(res => {
                 setMatches(res.data);
                 setLoad(true);
@@ -31,7 +34,7 @@ const Matches = () => {
         };
 
         return cleanup;
-    }, []);
+    }, [id]);
 
     const handleMatches = () => {
         const playerLine = matches.map(match => {

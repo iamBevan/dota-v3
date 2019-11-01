@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
-// import { Link } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import styles from "../../styles/styles.module.scss";
 import { useParams } from "react-router-dom";
 import { handleImg } from '../../utils/functions'
+import Context from "../../Context";
+
 
 const MatchPage = () => {
+    const { count, setCount } = useContext(Context)
     const [load, setLoad] = useState(false);
     const [match, setMatch] = useState(null);
     let { id } = useParams();
@@ -47,8 +50,9 @@ const MatchPage = () => {
                     </td>
                     <td style={{ fontWeight: 700, paddingLeft: 0 }}>
                         {player.personaname}
-                        {/* <Link onClick={setSteamId(player.account_id)} to={`/`}>{player.personaname}</Link> */}
-                        {console.log(player.account_id)}
+                        {player.account_id}
+                        <Link to={`/homepage/${player.account_id}`}>{player.personaname}</Link>
+                        {/* {console.log(account_id)} */}
                     </td>
                     <td>{player.level}</td>
                     <td style={{ color: "rgb(118, 173, 121)" }}>{player.kills}</td>

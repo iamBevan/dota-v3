@@ -1,6 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import Context from "../../Context";
+
 import axios from "axios";
 import "./styles.scss";
+import { PlayerSearch } from "../PlayerSearch/PlayerSearch";
+import { useParams } from "react-router-dom";
 
 interface Profile {
     account_id: number;
@@ -37,7 +41,7 @@ interface PlayerWl {
     lose: number;
 }
 
-let steamId = 87430370;
+// let steamId = 87430370;
 
 const winRate = (w: number, l: number) => {
     let total = w + l;
@@ -46,24 +50,26 @@ const winRate = (w: number, l: number) => {
 };
 
 const HomePage = () => {
+    let { id } = useParams();
+
     const [player, setPlayer] = useState<Player | null>(null);
     const [load, setLoad] = useState(false);
-    const [inputChange, setInputChange] = useState("");
     const [playerWl, setPlayerWl] = useState<PlayerWl | null>(null);
+    const { count, setCount } = useContext(Context) as {
+        count: number;
+        setCount: React.Dispatch<React.SetStateAction<string | undefined>>;
+    };
 
     useEffect(() => {
-        axios
-            .get(`https://api.opendota.com/api/players/${steamId}`)
-            .then(res => {
-                setPlayer(res.data);
-                setLoad(true);
-            });
-        axios
-            .get(`https://api.opendota.com/api/players/${steamId}/wl`)
-            .then(res => {
-                setPlayerWl(res.data);
-                setLoad(true);
-            });
+        axios.get(`https://api.opendota.com/api/players/${id}`).then(res => {
+            setPlayer(res.data);
+            setLoad(true);
+            setCount(id);
+        });
+        axios.get(`https://api.opendota.com/api/players/${id}/wl`).then(res => {
+            setPlayerWl(res.data);
+            setLoad(true);
+        });
 
         const cleanup = () => {
             setPlayer(null);
@@ -72,38 +78,14 @@ const HomePage = () => {
         };
 
         return cleanup;
-    }, []);
-
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setInputChange(event.target.value);
-    };
-
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        // setSteamId(inputChange);
-    };
+    }, [id]);
 
     if (load && player !== null && playerWl !== null) {
         return (
             <div className="homepage-container">
-                <div className="item1">
-                    <form onSubmit={handleSubmit}>
-                        <label>
-                            Enter your Steam ID:{" "}
-                            <input
-                                type="text"
-                                value={inputChange}
-                                onChange={handleInputChange}
-                            />{" "}
-                        </label>
-                        <input type="submit" value="Submit" />
-                    </form>
-                    <span>
-                        Or try one of these:{" "}
-                        <span>62716984 160226 2078533</span>
-                    </span>
-                </div>
+                <div className="item1"></div>
                 <div className="item2">
+                    <span className="homepage-title">Title</span>
                     <section className="player">
                         <h1>{player.profile.personaname}</h1>
                         <img
@@ -121,9 +103,18 @@ const HomePage = () => {
                         </span>
                     </section>
                 </div>
-                <div className="item3">Main</div>
-                <div className="item4">Right</div>
-                <div className="item5">Footer</div>
+                <div className="item3">
+                    {" "}
+                    <span className="homepage-title">Title</span>Main
+                </div>
+                <div className="item4">
+                    {" "}
+                    <span className="homepage-title">Title</span>Right
+                </div>
+                <div className="item5">
+                    {" "}
+                    <span className="homepage-title">Title</span>Footer
+                </div>
             </div>
         );
     } else {
