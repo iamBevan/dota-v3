@@ -29,7 +29,14 @@ const MatchPage = () => {
         return cleanup;
     }, [id]);
 
+    const playerName = (name, id) => {
 
+        if (id !== null) {
+            return <Link to={`/homepage/${id}`}>{name}</Link>;
+        } else { return <div style={{ color: "gray" }}>Anon</div>; }
+
+
+    };
 
     const handleTeam = (start, end) => {
         const radiant = match.players.slice(start, end);
@@ -49,10 +56,7 @@ const MatchPage = () => {
                         </div>
                     </td>
                     <td style={{ fontWeight: 700, paddingLeft: 0 }}>
-                        {player.personaname}
-                        {player.account_id}
-                        <Link to={`/homepage/${player.account_id}`}>{player.personaname}</Link>
-                        {/* {console.log(account_id)} */}
+                        {playerName(player.personaname, player.account_id)}
                     </td>
                     <td>{player.level}</td>
                     <td style={{ color: "rgb(118, 173, 121)" }}>{player.kills}</td>
