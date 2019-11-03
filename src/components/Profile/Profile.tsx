@@ -3,59 +3,22 @@ import Context from "../../Context";
 
 import axios from "axios";
 import "./styles.scss";
-import { PlayerSearch } from "../PlayerSearch/PlayerSearch";
 import { useParams } from "react-router-dom";
+import { Player, PlayerWl } from "./interface";
+import { PercentageBar } from "../PercentageBar/PercentageBar";
 
-interface Profile {
-    account_id: number;
-    personaname: string;
-    name: string;
-    plus: true;
-    cheese: number;
-    steamid: string;
-    avatar: string;
-    avatarmedium: string;
-    avatarfull: string;
-    profileurl: string;
-    last_login: string;
-    loccountrycode: string;
-    is_contributor: false;
-}
-
-interface Player {
-    tracked_until: string;
-    solo_competitive_rank: string;
-    competitive_rank: string;
-    rank_tier: number;
-    leaderboard_rank: number;
-    mmr_estimate: {
-        estimate: number;
-        stdDev: number;
-        n: number;
-    };
-    profile: Profile;
-}
-
-interface PlayerWl {
-    win: number;
-    lose: number;
-}
-
-// let steamId = 87430370;
-
-const winRate = (w: number, l: number) => {
+const winRate = (w: number, l: number): number => {
     let total = w + l;
-
-    return ((w / total) * 100).toFixed(2);
+    return (w / total) * 100;
 };
 
-const HomePage = () => {
+const Profile = () => {
     let { id } = useParams();
 
     const [player, setPlayer] = useState<Player | null>(null);
     const [load, setLoad] = useState(false);
     const [playerWl, setPlayerWl] = useState<PlayerWl | null>(null);
-    const { count, setCount } = useContext(Context) as {
+    const { setCount } = useContext(Context) as {
         count: number;
         setCount: React.Dispatch<React.SetStateAction<string | undefined>>;
     };
@@ -99,7 +62,23 @@ const HomePage = () => {
                         <span> Losses: {playerWl.lose} |</span>
                         <span>
                             {" "}
-                            Win Rate: {winRate(playerWl.win, playerWl.lose)}%
+                            Win Rate:{" "}
+                            {winRate(playerWl.win, playerWl.lose).toFixed(2)}%
+                            <br />
+                            <div
+                                style={{
+                                    height: "2px",
+                                    width: "500px",
+                                    margin: "auto"
+                                }}
+                            >
+                                <PercentageBar
+                                    percentage={winRate(
+                                        playerWl.win,
+                                        playerWl.lose
+                                    ).toFixed(0)}
+                                />
+                            </div>
                         </span>
                     </section>
                 </div>
@@ -128,4 +107,4 @@ const HomePage = () => {
     }
 };
 
-export default HomePage;
+export default Profile;

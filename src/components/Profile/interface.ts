@@ -2,7 +2,7 @@ export interface Profile {
     account_id: number;
     personaname: string;
     name: string;
-    plus: true;
+    plus: boolean;
     cheese: number;
     steamid: string;
     avatar: string;
@@ -11,7 +11,7 @@ export interface Profile {
     profileurl: string;
     last_login: string;
     loccountrycode: string;
-    is_contributor: false;
+    is_contributor: boolean;
 }
 
 export interface Player {
