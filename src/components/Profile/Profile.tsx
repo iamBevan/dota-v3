@@ -118,7 +118,13 @@ const Profile = () => {
                             />
                         </div>
                     </section>
-                    <section className="rank">1</section>
+                    <section className="rank">
+                        <h1>Competitive Rank</h1>
+                        <img
+                            src="https://www.opendota.com/assets/images/dota2/rank_icons/rank_icon_8.png"
+                            alt=""
+                        />
+                    </section>
                 </div>
                 <div className="main-container">
                     <div className="matches-container">
