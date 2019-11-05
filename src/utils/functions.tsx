@@ -1,6 +1,11 @@
+import * as React from "react";
 import { heroData } from "../constants/heroData";
 import { gameMode } from "../constants/gameMode";
-// import { HeroDetails } from "../constants/interface";
+
+export const winRate = (w: number, l: number): number => {
+    let total = w + l;
+    return (w / total) * 100;
+};
 
 export const handleImg = (heroId: number) => {
     const url = heroData.heroes[heroId].img;
@@ -39,4 +44,18 @@ export const matchDuration = (time: number) => {
     result += "" + secs;
 
     return result;
+};
+
+export const matchResult = (team: number, win: boolean) => {
+    if (team < 128 && win === true) {
+        return <div style={{ color: "rgb(118, 173, 121)" }}> Won Match </div>;
+    }
+    if (team < 128 && win === false) {
+        return <div style={{ color: "rgb(237, 94, 94)" }}> Lost Match </div>;
+    }
+    if (team > 127 && win === true) {
+        return <div style={{ color: "rgb(237, 94, 94)" }}> Lost Match </div>;
+    }
+
+    return <div style={{ color: "rgb(118, 173, 121)" }}> Won Match </div>;
 };

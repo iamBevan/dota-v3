@@ -3,14 +3,14 @@ import React from "react";
 export const PercentageBar = props => {
     const container = {
         width: "100%",
-        backgroundColor: "red",
+        backgroundColor: "rgb(237, 94, 94)",
         height: "100%"
     };
 
     const percentage = {
         color: "white",
         width: `${props.percentage}%`,
-        backgroundColor: "#4caf50",
+        backgroundColor: "rgb(118, 173, 121)",
         height: "100%"
     };
 

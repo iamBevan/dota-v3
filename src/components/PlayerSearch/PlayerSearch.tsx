@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import axios from "axios";
 import "./styles.scss";
 
 const PlayerSearch = () => {
@@ -31,11 +30,13 @@ const PlayerSearch = () => {
                     <button type="button">Submit</button>
                 </Link>
             </form>
-            {steamId}
-            <span className="homepage-title">Title</span>
-
             <span>
-                Or try one of these: <span>62716984 160226 2078533</span>
+                <br />
+                Or try one of these:{" "}
+                <span>
+                    <b>329579 160226 2078533</b>
+                </span>
+                {steamId}
             </span>
         </div>
     );

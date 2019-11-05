@@ -1,0 +1,16 @@
+.heroes {
+    background: #3a4750;
+}
+
+.hero-img-name {
+    display: flex;
+
+    .hero-img {
+        img {
+            height: 32px;
+        }
+    }
+    .hero-name {
+        padding: 10px 0 0 10px;
+    }
+}

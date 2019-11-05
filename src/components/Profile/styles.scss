@@ -1,61 +1,44 @@
-.item1 {
-    grid-area: header;
-}
-.item2 {
-    grid-area: menu;
-}
-.item3 {
-    grid-area: main;
-}
-.item4 {
-    grid-area: right;
-}
-.item5 {
-    grid-area: footer;
-}
-
 .homepage-container {
-    text-align: center;
-    padding: 60px 0 0 0;
-    text-align: center;
     color: white;
 
-    display: grid;
-    grid-template-areas:
-        "header header header header header header"
-        "menu main main main right right"
-        "menu footer footer footer footer footer";
-    grid-gap: 10px;
-    padding: 10px;
-
-    input[type="text"] {
-        width: 40%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        box-sizing: border-box;
-        border: 2px solid gray;
-        border-radius: 4px;
-    }
-
-    div {
-        background: #3a4750;
-        text-align: center;
-        padding: 0 0 20px 0;
+    .border-shadow {
         -webkit-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.16);
         -moz-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.16);
         box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.16);
     }
 
-    .homepage-title {
-        background: #303841;
-        height: 40px;
-        width: 100%;
-        float: left;
-    }
-}
+    .player-container {
+        grid-area: header;
+        display: flex;
+        background: #3a4750;
 
-.player {
-    width: 500px;
-    height: 100%;
-    margin: auto;
+        .player {
+            width: 50%;
+            height: 100%;
+            margin: auto;
+            text-align: center;
+            padding: 0 0 20px 0;
+        }
+
+        .rank {
+            width: 50%;
+            text-align: center;
+        }
+    }
+
+    .main-container {
+        margin-top: 10px;
+        display: flex;
+        width: 1200px;
+
+        .matches-container {
+            width: 65%;
+            margin: 10px 10px 10px 0;
+        }
+
+        .sidebar-container {
+            width: 35%;
+            margin: 10px 0 0 10px;
+        }
+    }
 }

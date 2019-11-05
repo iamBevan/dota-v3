@@ -55,8 +55,6 @@ body {
     background: linear-gradient(90deg, red 0%, red 0%, rgba(48, 56, 65, 1) 30%);
     padding-top: 5px;
 }
-body {
-}
 
 .hero-img {
     height: 100px;
@@ -64,9 +62,10 @@ body {
 }
 
 table {
-    text-align: left;
+    border-collapse: collapse;
+    text-align: center;
     margin: auto;
-    width: 1200px;
+    width: 100%;
     -webkit-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.16);
     -moz-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.16);
     box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.16);
@@ -80,6 +79,7 @@ table {
         font-weight: 500;
         padding: 15px;
         margin: 0;
+        background: #303841;
         font-size: 13px;
     }
 
@@ -101,7 +101,7 @@ table {
     // }
 
     td {
-        padding: 15px;
+        padding: 15px 0 15px 0px;
         margin: 0;
     }
 }

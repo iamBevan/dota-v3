@@ -32,3 +32,20 @@ export interface PlayerWl {
     win: number;
     lose: number;
 }
+
+export interface Peer {
+    account_id: number;
+    last_played: number;
+    win: number;
+    games: number;
+    with_win: number;
+    with_games: number;
+    against_win: number;
+    against_games: number;
+    with_gpm_sum: number;
+    with_xpm_sum: number;
+    personaname: string;
+    last_login: string;
+    avatar: string;
+    avatarfull: string;
+}

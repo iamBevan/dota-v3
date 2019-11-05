@@ -29,7 +29,7 @@ const MatchPage = () => {
         if (id !== null) {
             return <Link to={`/homepage/${id}`}>{name}</Link>;
         } else {
-            return <div style={{ color: "gray" }}>Anon</div>;
+            return <div style={{ color: "#303841" }}>Anon</div>;
         }
     };
 
@@ -49,7 +49,7 @@ const MatchPage = () => {
         return (
             <tbody key={player.hero_id}>
                 <tr>
-                    <td style={{ paddingRight: "10px", textAlign: "right" }}>
+                    <td style={{ textAlign: "left", paddingLeft: "30px" }}>
                         <div className="hero-img">
                             <img
                                 style={{ height: "30px" }}
@@ -58,8 +58,10 @@ const MatchPage = () => {
                             />
                         </div>
                     </td>
-                    <td style={{ fontWeight: 700, paddingLeft: 0 }}>
-                        {playerName(player.personaname, player.account_id)}
+                    <td style={{ textAlign: "left" }}>
+                        <b>
+                            {playerName(player.personaname, player.account_id)}
+                        </b>
                     </td>
                     <td>{player.level}</td>
                     <td style={{ color: "rgb(118, 173, 121)" }}>
@@ -93,7 +95,7 @@ const MatchPage = () => {
     const tableContainer = (table, teamColour) => {
         return (
             <div className={teamColour}>
-                <table cellSpacing="0" cellPadding="0">
+                <table>
                     <tbody>
                         <tr>
                             <th>PLAYER</th>
