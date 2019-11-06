@@ -32,9 +32,13 @@ const PlayerSearch = () => {
             </form>
             <span>
                 <br />
-                Or try one of these:{" "}
+                Or try one of these: <br />
                 <span>
-                    <b>329579 160226 2078533</b>
+                    <b>
+                        <br /> 329579
+                        <br /> 160226
+                        <br /> 2078533
+                    </b>
                 </span>
                 {steamId}
             </span>
