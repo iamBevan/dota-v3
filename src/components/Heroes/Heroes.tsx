@@ -1,7 +1,12 @@
 import React from "react";
 import "./styles.scss";
 import { Hero } from "./interface";
-import { handleImg, heroName } from "../../utils/functions";
+import {
+    handleImg,
+    heroName,
+    handleLaneImg,
+    lastPlayed
+} from "../../utils/functions";
 import { PercentageBar } from "../PercentageBar/PercentageBar";
 
 const Heroes = props => {
@@ -17,10 +22,19 @@ const Heroes = props => {
                         <td style={{ paddingLeft: "15px" }}>
                             <div className="hero-img-name">
                                 <div className="hero-img">
-                                    <img src={handleImg(hero.hero_id)} alt="" />
+                                    <img
+                                        style={{
+                                            height: "30px",
+                                            float: "left",
+                                            paddingRight: "10px"
+                                        }}
+                                        src={handleImg(hero.hero_id)}
+                                        alt=""
+                                    />{" "}
                                 </div>
                                 <div className="hero-name">
-                                    {heroName(hero.hero_id)}
+                                    <b>{heroName(hero.hero_id)}</b> <br />
+                                    {lastPlayed(hero.last_played)}
                                 </div>
                             </div>
                         </td>
@@ -59,7 +73,7 @@ const Heroes = props => {
                     <thead>
                         <tr>
                             <th style={{ textAlign: "left" }}>Hero</th>
-                            <th>Matches</th>
+                            <th>Heroes</th>
                             <th>Winrate %</th>
                         </tr>
                     </thead>

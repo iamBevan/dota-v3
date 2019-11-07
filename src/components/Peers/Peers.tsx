@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Peer } from "../Profile/interfaces";
 import "./styles.scss";
 import { PercentageBar } from "../PercentageBar/PercentageBar";
+import { handleImg, lastPlayed, heroName } from "../../utils/functions";
 
 const Peers = props => {
     const winRate = (w: number, t: number) => {
@@ -17,12 +18,22 @@ const Peers = props => {
                         <td style={{ paddingLeft: "15px" }}>
                             <div className="peer-img-name">
                                 <div className="peer-img">
-                                    <img src={peer.avatar} alt="" />
+                                    <img
+                                        style={{
+                                            height: "30px",
+                                            float: "left",
+                                            paddingRight: "10px"
+                                        }}
+                                        src={peer.avatar}
+                                        alt=""
+                                    />{" "}
                                 </div>
                                 <div className="peer-name">
                                     <Link to={`/homepage/${peer.account_id}`}>
-                                        {peer.personaname}
+                                        <b>{peer.personaname}</b>
+                                        <br />
                                     </Link>
+                                    {lastPlayed(peer.last_played)}
                                 </div>
                             </div>
                         </td>

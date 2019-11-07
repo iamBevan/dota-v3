@@ -73,7 +73,8 @@ const Profile = () => {
         playerWl();
         peerList();
         heroList();
-        cleanUp();
+
+        return cleanUp;
     }, [id, setCount]);
 
     if (load && player !== null && playerWl !== null) {

@@ -1,6 +1,15 @@
 import * as React from "react";
 import { heroData } from "../constants/heroData";
 import { gameMode } from "../constants/gameMode";
+import * as moment from "moment";
+
+export const playerTeam = team => {
+    if (team < 128) {
+        return "Radiant";
+    }
+
+    return "Dire";
+};
 
 export const winRate = (w: number, l: number): number => {
     let total = w + l;
@@ -58,4 +67,21 @@ export const matchResult = (team: number, win: boolean) => {
     }
 
     return <div style={{ color: "rgb(118, 173, 121)" }}> Won Match </div>;
+};
+
+export const lastPlayed = (date: number) => {
+    return moment.unix(date).fromNow();
+};
+
+export const skillBracket = (skill: number) => {
+    switch (skill) {
+        case 0:
+            return "Normal Skill";
+        case 1:
+            return "High Skill";
+        case 2:
+            return "Very High Skill";
+        default:
+            return "Unknown Skill";
+    }
 };

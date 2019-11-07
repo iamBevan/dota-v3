@@ -8,7 +8,10 @@ import {
     matchDuration,
     handleGameMode,
     heroName,
-    matchResult
+    matchResult,
+    lastPlayed,
+    skillBracket,
+    playerTeam
 } from "../../utils/functions";
 
 const Matches = props => {
@@ -49,35 +52,52 @@ const Matches = props => {
                 return <div>x {match.party_size}</div>;
             }
         };
+
         return (
             <tbody key={match.match_id}>
                 <tr>
                     <td style={{ textAlign: "left", paddingLeft: "10px" }}>
                         <div className="hero-img">
                             <img
-                                style={{ height: "30px" }}
+                                style={{
+                                    height: "30px",
+                                    float: "left",
+                                    paddingRight: "10px"
+                                }}
                                 src={handleImg(match.hero_id)}
                                 alt=""
                             />{" "}
-                            <Link to={`/match-page/${match.match_id}`}>
-                                <b>{heroName(match.hero_id)}</b>
-                            </Link>{" "}
-                            <span>
-                                <img
-                                    alt=""
-                                    style={{ height: "15px" }}
-                                    src={handleLaneImg(match.lane)}
-                                />
-                            </span>
+                            <div>
+                                <Link to={`/match-page/${match.match_id}`}>
+                                    <b>{heroName(match.hero_id)}</b>
+                                </Link>{" "}
+                                <span>
+                                    <img
+                                        alt=""
+                                        style={{ height: "15px" }}
+                                        src={handleLaneImg(match.lane)}
+                                    />
+                                </span>
+                                <br />
+                                {lastPlayed(match.start_time)}
+                            </div>
                         </div>
                     </td>
                     <td style={{ textAlign: "left" }}>
                         {matchResult(match.player_slot, match.radiant_win)}
-                        <div>{partySize()}</div>
-                    </td>
 
-                    <td>{matchDuration(match.duration)}</td>
-                    <td>{handleGameMode(match.game_mode)}</td>
+                        <span>{partySize()}</span>
+                    </td>
+                    <td>
+                        {handleGameMode(match.game_mode)}
+                        <br />
+                        {skillBracket(match.skill)}
+                    </td>
+                    <td>
+                        {matchDuration(match.duration)}
+                        <br />
+                        {playerTeam(match.player_slot)}
+                    </td>
                     <td style={{ color: "rgb(118, 173, 121)" }}>
                         {match.kills}
                     </td>
@@ -98,12 +118,20 @@ const Matches = props => {
                 <table>
                     <tbody>
                         <tr>
-                            <th style={{ textAlign: "left" }}>HERO</th>
-                            <th style={{ textAlign: "left", paddingLeft: 0 }}>
+                            <th style={{ textAlign: "left", width: "250px" }}>
+                                HERO
+                            </th>
+                            <th
+                                style={{
+                                    textAlign: "left",
+                                    paddingLeft: 0,
+                                    width: "60px"
+                                }}
+                            >
                                 RESULT
                             </th>
-                            <th>DURATION</th>
                             <th>GAME MODE</th>
+                            <th>DURATION</th>
                             <th style={{ color: "rgb(118, 173, 121)" }}>K</th>
                             <th style={{ color: "rgb(237, 94, 94)" }}>D</th>
                             <th style={{ color: "rgb(124, 153, 168)" }}>A</th>
