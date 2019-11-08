@@ -142,7 +142,6 @@ const Matches = props => {
             </div>
         );
     };
-
     if (load) {
         return <div>{tableContainer()}</div>;
     } else {

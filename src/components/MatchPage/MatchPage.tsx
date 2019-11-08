@@ -130,7 +130,6 @@ const MatchPage = () => {
     if (load) {
         return (
             <div>
-                {/* Radiant = (0, 5), Dire = (5, 10) */}
                 {tableContainer(handleTeam(0, 5), styles.tableContainerGreen)}
                 <br />
                 {tableContainer(handleTeam(5, 10), styles.tableContainerRed)}
