@@ -85,7 +85,7 @@ export const gameMode: GameModesList = {
         },
         "18": {
             id: 18,
-            name: "game_mode_ability_draft"
+            name: "Ability Draft"
         },
         "19": {
             id: 19,
@@ -93,7 +93,7 @@ export const gameMode: GameModesList = {
         },
         "20": {
             id: 20,
-            name: "game_mode_all_random_death_match"
+            name: "All Random DM"
         },
         "21": {
             id: 21,

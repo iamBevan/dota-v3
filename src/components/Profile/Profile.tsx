@@ -129,7 +129,7 @@ const Profile = () => {
                 </div>
                 <div className="main-container">
                     <div className="matches-container">
-                        <Matches size={10} />
+                        <Matches size={11} />
                         <Link to={`/matches/${count}`}>
                             <div style={{ textAlign: "center" }}>
                                 <b>More...</b>

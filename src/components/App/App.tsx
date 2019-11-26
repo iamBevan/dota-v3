@@ -12,8 +12,8 @@ import Profile from "../Profile/Profile";
 const App = () => {
     const [count, setCount] = useState(0);
     return (
-        <Context.Provider value={{ count, setCount }}>
-            <BrowserRouter>
+        <BrowserRouter>
+            <Context.Provider value={{ count, setCount }}>
                 <section style={{ width: "1200px", margin: "auto" }}>
                     <Header />
                     <Switch>
@@ -27,8 +27,8 @@ const App = () => {
                     </Switch>
                 </section>
                 <Footer />
-            </BrowserRouter>
-        </Context.Provider>
+            </Context.Provider>
+        </BrowserRouter>
     );
 };
 
