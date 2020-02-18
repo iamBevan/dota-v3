@@ -1,60 +1,60 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import styles from "../../styles/styles.module.scss";
-import { useParams } from "react-router-dom";
-import { handleImg } from "../../utils/functions";
-import { MatchData } from "./interfaces";
+import React, { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
+import axios from "axios"
+import styles from "./MatchPage.module.scss"
+import { useParams } from "react-router-dom"
+import { handleImg } from "../../utils/functions"
+import { MatchData } from "./interfaces"
 
 const MatchPage = () => {
-    const [load, setLoad] = useState(false);
-    const [match, setMatch] = useState<MatchData | null>(null);
-    let { id } = useParams();
+    const [load, setLoad] = useState(false)
+    const [match, setMatch] = useState<MatchData | null>(null)
+    let { id } = useParams()
 
     useEffect(() => {
         axios.get(`https://api.opendota.com/api/matches/${id}`).then(res => {
-            setMatch(res.data);
-            setLoad(true);
-        });
+            setMatch(res.data)
+            setLoad(true)
+        })
         const cleanup = () => {
-            setMatch(null);
-            setLoad(false);
-            console.log("matchpage cleanup");
-        };
+            setMatch(null)
+            setLoad(false)
+            console.log("matchpage cleanup")
+        }
 
-        return cleanup;
-    }, [id]);
+        return cleanup
+    }, [id])
 
     const playerName = (name: string, id: number) => {
         if (id !== null) {
-            return <Link to={`/homepage/${id}`}>{name}</Link>;
+            return <Link to={`/homepage/${id}`}>{name}</Link>
         } else {
-            return <div style={{ color: "#303841" }}>Anon</div>;
+            return <div style={{ color: "#303841" }}>Anon</div>
         }
-    };
+    }
 
     const handleTeam = (start: number, end: number) => {
         if (match !== null) {
-            const radiant = match.players.slice(start, end);
+            const radiant = match.players.slice(start, end)
             const playerLine = radiant.map(player => {
-                return matchTable(player);
-            });
-            return playerLine;
+                return matchTable(player)
+            })
+            return playerLine
         } else {
-            return <div></div>;
+            return <div></div>
         }
-    };
+    }
 
     const matchTable = player => {
         return (
             <tbody key={player.hero_id}>
                 <tr>
                     <td style={{ textAlign: "left", paddingLeft: "30px" }}>
-                        <div className="hero-img">
+                        <div className='hero-img'>
                             <img
                                 style={{ height: "30px" }}
                                 src={handleImg(player.hero_id)}
-                                alt=""
+                                alt=''
                             />
                         </div>
                     </td>
@@ -89,8 +89,8 @@ const MatchPage = () => {
                     <td>buffs</td>
                 </tr>
             </tbody>
-        );
-    };
+        )
+    }
 
     const tableContainer = (table, teamColour) => {
         return (
@@ -111,9 +111,9 @@ const MatchPage = () => {
                             <th>HH</th>
                             <th style={{ color: "rgb(201, 175, 29)" }}>
                                 <img
-                                    alt=""
+                                    alt=''
                                     style={{ height: "12px" }}
-                                    src="https://api.opendota.com/apps/dota2/images/tooltips/gold.png"
+                                    src='https://api.opendota.com/apps/dota2/images/tooltips/gold.png'
                                 />{" "}
                                 G
                             </th>
@@ -124,8 +124,8 @@ const MatchPage = () => {
                     {table}
                 </table>
             </div>
-        );
-    };
+        )
+    }
 
     if (load) {
         return (
@@ -134,10 +134,10 @@ const MatchPage = () => {
                 <br />
                 {tableContainer(handleTeam(5, 10), styles.tableContainerRed)}
             </div>
-        );
+        )
     } else {
-        return <div>Loading...</div>;
+        return <div>Loading...</div>
     }
-};
+}
 
-export default MatchPage;
+export default MatchPage

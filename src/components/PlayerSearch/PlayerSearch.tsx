@@ -1,33 +1,38 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react"
+import { Link } from "react-router-dom"
 
-import "./styles.scss";
+import styles from "./PlayerSearch.module.scss"
 
 const PlayerSearch = () => {
-    const [inputChange, setInputChange] = useState("");
-    const [steamId, setSteamId] = useState("");
+    const [inputChange, setInputChange] = useState("")
+    const [steamId, setSteamId] = useState("")
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setInputChange(event.target.value);
-    };
+        setInputChange(event.target.value)
+    }
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        setSteamId(inputChange);
-    };
+        event.preventDefault()
+        setSteamId(inputChange)
+    }
     return (
-        <div className="searchbox-container">
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Enter your Steam ID:{" "}
-                    <input
-                        type="text"
-                        value={inputChange}
-                        onChange={handleInputChange}
-                    />{" "}
-                </label>
+        <div className={styles["landing"]}>
+            <h1 className={styles["landing__heading"]}>Dota Statistics</h1>
+            <form className={styles["landing__form"]} onSubmit={handleSubmit}>
+                <input
+                    className={styles["landing__form__input"]}
+                    type='text'
+                    value={inputChange}
+                    onChange={handleInputChange}
+                    placeholder='Search by SteamID...'
+                />
                 <Link to={`/homepage/${inputChange}`}>
-                    <button type="button">Submit</button>
+                    <button
+                        className={styles[`landing__form__button`]}
+                        type='submit'
+                    >
+                        Search
+                    </button>
                 </Link>
             </form>
             <span>
@@ -43,7 +48,7 @@ const PlayerSearch = () => {
                 {steamId}
             </span>
         </div>
-    );
-};
+    )
+}
 
-export { PlayerSearch };
+export { PlayerSearch }

@@ -1,12 +1,13 @@
-header {
+.header {
     width: 100%;
     text-align: center;
-    nav {
+    .nav {
         padding: 10px 0 0 0;
         margin: auto;
         color: white;
-        height: 60px;
+        height: 8vh;
         list-style-type: none;
+        background-color: #0f4c75;
         // border-bottom: 1px white solid;
     }
 }
