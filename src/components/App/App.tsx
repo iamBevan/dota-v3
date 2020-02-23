@@ -16,7 +16,7 @@ const App = () => {
         <BrowserRouter>
             <Context.Provider value={{ count, setCount }}>
                 <section>
-                    <Header />
+                    {/* <Header /> */}
                     <Switch>
                         <Route path='/' exact component={PlayerSearch} />
                         <Route path='/homepage/:id' children={<Profile />} />
@@ -27,7 +27,7 @@ const App = () => {
                         />
                     </Switch>
                 </section>
-                <Footer />
+                {/* <Footer /> */}
             </Context.Provider>
         </BrowserRouter>
     )

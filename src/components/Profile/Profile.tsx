@@ -13,7 +13,7 @@ import { winRate } from "../../utils/functions"
 import { Heroes } from "../Heroes/Heroes"
 import { Hero } from "../Heroes/interface"
 
-const Profile = () => {
+const Profile: React.FC = () => {
     let { id } = useParams()
 
     const [player, setPlayer] = useState<Player | null>(null)
@@ -67,11 +67,6 @@ const Profile = () => {
             setHeroes([])
             console.log("homepage cleanup")
         }
-
-        // playerList()
-        // playerWl()
-        // peerList()
-        // heroList()
 
         return cleanUp
     }, [id, setCount])

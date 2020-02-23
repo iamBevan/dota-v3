@@ -17,7 +17,10 @@ const PlayerSearch = () => {
     }
     return (
         <div className={styles["landing"]}>
-            <h1 className={styles["landing__heading"]}>Dota Statistics</h1>
+            <h1 className={styles["landing__heading"]}>
+                Dota<span className={styles["landing__heading--two"]}>2</span>{" "}
+                Statistics
+            </h1>
             <form className={styles["landing__form"]} onSubmit={handleSubmit}>
                 <input
                     className={styles["landing__form__input"]}
