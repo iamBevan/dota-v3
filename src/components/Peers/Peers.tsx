@@ -1,23 +1,23 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Peer } from "../Profile/interfaces";
-import "./styles.scss";
-import { PercentageBar } from "../PercentageBar/PercentageBar";
-import { handleImg, lastPlayed, heroName } from "../../utils/functions";
+import React from "react"
+import { Link } from "react-router-dom"
+import { Peer } from "../Profile/interfaces"
+import styles from "./Peers.module.scss"
+import { PercentageBar } from "../PercentageBar/PercentageBar"
+import { handleImg, lastPlayed, heroName } from "../../utils/functions"
 
 const Peers = props => {
     const winRate = (w: number, t: number) => {
-        let result = (w / t) * 100;
-        return result;
-    };
+        let result = (w / t) * 100
+        return result
+    }
     const handlePeers = (peers: Peer[]) => {
         if (peers !== undefined) {
             const peerLine = peers.slice(0, 5).map(peer => {
                 return (
                     <tr key={peer.account_id}>
                         <td style={{ paddingLeft: "15px" }}>
-                            <div className="peer-img-name">
-                                <div className="peer-img">
+                            <div className='peer-img-name'>
+                                <div className='peer-img'>
                                     <img
                                         style={{
                                             height: "30px",
@@ -25,10 +25,10 @@ const Peers = props => {
                                             paddingRight: "10px"
                                         }}
                                         src={peer.avatar}
-                                        alt=""
+                                        alt=''
                                     />{" "}
                                 </div>
-                                <div className="peer-name">
+                                <div className='peer-name'>
                                     <Link to={`/homepage/${peer.account_id}`}>
                                         <b>{peer.personaname}</b>
                                         <br />
@@ -57,17 +57,17 @@ const Peers = props => {
                             </div>
                         </td>
                     </tr>
-                );
-            });
-            return peerLine;
+                )
+            })
+            return peerLine
         } else {
-            return;
+            return
         }
-    };
+    }
 
     if (props.load) {
         return (
-            <div className="peers">
+            <div className='peers'>
                 <table>
                     <thead>
                         <tr>
@@ -79,10 +79,10 @@ const Peers = props => {
                     <tbody>{handlePeers(props.peers)}</tbody>
                 </table>
             </div>
-        );
+        )
     } else {
-        return <div />;
+        return <div />
     }
-};
+}
 
-export { Peers };
+export { Peers }

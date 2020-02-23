@@ -29,13 +29,19 @@
         }
 
         &__button {
+            letter-spacing: 0.2rem;
             color: #fff;
             margin: -1rem auto;
-            padding: 1.2rem;
+            padding: 1.2rem 2rem;
             width: 15rem;
             border: none;
             background-color: #0f4c75;
             border-radius: 10rem;
+            font-size: 1.6rem;
+
+            &:hover {
+                background-color: #1b608f;
+            }
         }
     }
 }

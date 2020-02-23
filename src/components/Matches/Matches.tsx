@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { Link, useParams } from "react-router-dom";
-import "./styles.scss";
+import React, { useEffect, useState } from "react"
+import axios from "axios"
+import { Link, useParams } from "react-router-dom"
+import styles from "./Matches.module.scss"
 import {
     handleImg,
     handleLaneImg,
@@ -12,62 +12,62 @@ import {
     lastPlayed,
     skillBracket,
     playerTeam
-} from "../../utils/functions";
+} from "../../utils/functions"
 
 const Matches = props => {
-    let { id } = useParams();
+    let { id } = useParams()
 
-    const [matches, setMatches] = useState([]);
-    const [load, setLoad] = useState(false);
+    const [matches, setMatches] = useState([])
+    const [load, setLoad] = useState(false)
 
     useEffect(() => {
         axios
             .get(`https://api.opendota.com/api/players/${id}/recentMatches`)
             .then(res => {
-                setMatches(res.data);
-                setLoad(true);
-            });
+                setMatches(res.data)
+                setLoad(true)
+            })
 
         const cleanup = () => {
-            setMatches([]);
-            setLoad(false);
-            console.log("matches cleanup");
-        };
+            setMatches([])
+            setLoad(false)
+            console.log("matches cleanup")
+        }
 
-        return cleanup;
-    }, [id]);
+        return cleanup
+    }, [id])
 
     const handleMatches = () => {
         const playerLine = matches.slice(0, props.size).map(match => {
-            return matchesTable(match);
-        });
-        return playerLine;
-    };
+            return matchesTable(match)
+        })
+        return playerLine
+    }
 
     const matchesTable = match => {
         const partySize = () => {
             if (match.party_size === null) {
-                return <div></div>;
+                return <div></div>
             } else {
                 return (
                     <div>
-                        <svg viewBox="0 0 24 24" className="party">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        <svg viewBox='0 0 24 24' className='party'>
+                            <path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'></path>
+                            <circle cx='9' cy='7' r='4'></circle>
+                            <path d='M23 21v-2a4 4 0 0 0-3-3.87'></path>
+                            <path d='M16 3.13a4 4 0 0 1 0 7.75'></path>
                         </svg>{" "}
                         {match.party_size}
                     </div>
-                );
+                )
             }
-        };
+        }
 
         return (
             <tbody key={match.match_id}>
                 <tr>
                     <td style={{ textAlign: "left", paddingLeft: "10px" }}>
-                        <div className="hero-img">
+                        <div className='hero-img'>
                             <img
                                 style={{
                                     height: "30px",
@@ -75,7 +75,7 @@ const Matches = props => {
                                     paddingRight: "10px"
                                 }}
                                 src={handleImg(match.hero_id)}
-                                alt=""
+                                alt=''
                             />{" "}
                             <div>
                                 <Link to={`/match-page/${match.match_id}`}>
@@ -83,7 +83,7 @@ const Matches = props => {
                                 </Link>{" "}
                                 <span>
                                     <img
-                                        alt=""
+                                        alt=''
                                         style={{ height: "15px" }}
                                         src={handleLaneImg(match.lane)}
                                     />
@@ -119,8 +119,8 @@ const Matches = props => {
                     </td>
                 </tr>
             </tbody>
-        );
-    };
+        )
+    }
 
     const tableContainer = () => {
         return (
@@ -150,13 +150,13 @@ const Matches = props => {
                     {handleMatches()}
                 </table>
             </div>
-        );
-    };
-    if (load) {
-        return <div>{tableContainer()}</div>;
-    } else {
-        return <div>#</div>;
+        )
     }
-};
+    if (load) {
+        return <div>{tableContainer()}</div>
+    } else {
+        return <div>#</div>
+    }
+}
 
-export default Matches;
+export default Matches

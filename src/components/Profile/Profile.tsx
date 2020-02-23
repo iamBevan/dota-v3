@@ -1,91 +1,91 @@
-import React, { useState, useEffect, useContext } from "react";
-import Context from "../../Context";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import "./styles.scss";
-import { useParams } from "react-router-dom";
-import { Player, PlayerWl } from "./interfaces";
-import { PercentageBar } from "../PercentageBar/PercentageBar";
-import Matches from "../Matches/Matches";
-import { Peers } from "../Peers/Peers";
-import { Peer } from "./interfaces";
-import { winRate } from "../../utils/functions";
-import { Heroes } from "../Heroes/Heroes";
-import { Hero } from "../Heroes/interface";
+import React, { useState, useEffect, useContext } from "react"
+import Context from "../../Context"
+import { Link } from "react-router-dom"
+import axios from "axios"
+import styles from "./Profile.module.scss"
+import { useParams } from "react-router-dom"
+import { Player, PlayerWl } from "./interfaces"
+import { PercentageBar } from "../PercentageBar/PercentageBar"
+import Matches from "../Matches/Matches"
+import { Peers } from "../Peers/Peers"
+import { Peer } from "./interfaces"
+import { winRate } from "../../utils/functions"
+import { Heroes } from "../Heroes/Heroes"
+import { Hero } from "../Heroes/interface"
 
 const Profile = () => {
-    let { id } = useParams();
+    let { id } = useParams()
 
-    const [player, setPlayer] = useState<Player | null>(null);
-    const [load, setLoad] = useState(false);
-    const [playerWl, setPlayerWl] = useState<PlayerWl | null>(null);
+    const [player, setPlayer] = useState<Player | null>(null)
+    const [load, setLoad] = useState(false)
+    const [playerWl, setPlayerWl] = useState<PlayerWl | null>(null)
     const { count, setCount } = useContext(Context) as {
-        count: number;
-        setCount: React.Dispatch<React.SetStateAction<string | undefined>>;
-    };
-    const [peers, setPeers] = useState<Peer[]>([]);
-    const [heroes, setHeroes] = useState<Hero[]>([]);
+        count: number
+        setCount: React.Dispatch<React.SetStateAction<string | undefined>>
+    }
+    const [peers, setPeers] = useState<Peer[]>([])
+    const [heroes, setHeroes] = useState<Hero[]>([])
 
     useEffect(() => {
         const playerList = async () => {
             axios
                 .get(`https://api.opendota.com/api/players/${id}`)
                 .then(res => {
-                    setPlayer(res.data);
-                    setLoad(true);
-                    setCount(id);
-                });
-        };
+                    setPlayer(res.data)
+                    setLoad(true)
+                    setCount(id)
+                })
+        }
         const playerWl = async () => {
             axios
                 .get(`https://api.opendota.com/api/players/${id}/wl`)
                 .then(res => {
-                    setPlayerWl(res.data);
-                    setLoad(true);
-                });
-        };
+                    setPlayerWl(res.data)
+                    setLoad(true)
+                })
+        }
         const peerList = async () => {
             axios
                 .get(`https://api.opendota.com/api/players/${id}/peers`)
                 .then(res => {
-                    setPeers(res.data);
-                    setLoad(true);
-                });
-        };
+                    setPeers(res.data)
+                    setLoad(true)
+                })
+        }
         const heroList = async () => {
             axios
                 .get(`https://api.opendota.com/api/players/${id}/heroes`)
                 .then(res => {
-                    setHeroes(res.data);
-                    setLoad(true);
-                });
-        };
+                    setHeroes(res.data)
+                    setLoad(true)
+                })
+        }
 
         const cleanUp = () => {
-            setPlayer(null);
-            setLoad(false);
-            setPeers([]);
-            setHeroes([]);
-            console.log("homepage cleanup");
-        };
+            setPlayer(null)
+            setLoad(false)
+            setPeers([])
+            setHeroes([])
+            console.log("homepage cleanup")
+        }
 
-        playerList();
-        playerWl();
-        peerList();
-        heroList();
+        playerList()
+        playerWl()
+        peerList()
+        heroList()
 
-        return cleanUp;
-    }, [id, setCount]);
+        return cleanUp
+    }, [id, setCount])
 
     if (load && player !== null && playerWl !== null) {
         return (
-            <div className="homepage-container">
-                <div className="player-container border-shadow">
-                    <section className="player">
+            <div className='homepage-container'>
+                <div className='player-container border-shadow'>
+                    <section className='player'>
                         <h1>{player.profile.personaname}</h1>
                         <img
                             style={{ width: 90 }}
-                            alt=""
+                            alt=''
                             src={player.profile.avatarmedium}
                         />
                         <br />
@@ -119,16 +119,16 @@ const Profile = () => {
                             />
                         </div>
                     </section>
-                    <section className="rank">
+                    <section className='rank'>
                         <h1>Competitive Rank</h1>
                         <img
-                            src="https://www.opendota.com/assets/images/dota2/rank_icons/rank_icon_8.png"
-                            alt=""
+                            src='https://www.opendota.com/assets/images/dota2/rank_icons/rank_icon_8.png'
+                            alt=''
                         />
                     </section>
                 </div>
-                <div className="main-container">
-                    <div className="matches-container">
+                <div className='main-container'>
+                    <div className='matches-container'>
                         <Matches size={11} />
                         <Link to={`/matches/${count}`}>
                             <div style={{ textAlign: "center" }}>
@@ -136,21 +136,21 @@ const Profile = () => {
                             </div>
                         </Link>
                     </div>
-                    <div className="sidebar-container">
-                        <span className="sidebar-child">
+                    <div className='sidebar-container'>
+                        <span className='sidebar-child'>
                             <Peers peers={peers} load={load} />
                         </span>
                         <br />
-                        <span className="sidebar-child">
+                        <span className='sidebar-child'>
                             <Heroes heroes={heroes} load={load} />
                         </span>
                     </div>
                 </div>
             </div>
-        );
+        )
     } else {
-        return <div />;
+        return <div />
     }
-};
+}
 
-export default Profile;
+export default Profile

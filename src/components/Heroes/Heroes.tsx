@@ -1,27 +1,22 @@
-import React from "react";
-import "./styles.scss";
-import { Hero } from "./interface";
-import {
-    handleImg,
-    heroName,
-    handleLaneImg,
-    lastPlayed
-} from "../../utils/functions";
-import { PercentageBar } from "../PercentageBar/PercentageBar";
+import React from "react"
+import styles from "./Hero.module.scss"
+import { Hero } from "./interface"
+import { handleImg, heroName, lastPlayed } from "../../utils/functions"
+import { PercentageBar } from "../PercentageBar/PercentageBar"
 
 const Heroes = props => {
     const winRate = (w: number, t: number) => {
-        let result = (w / t) * 100;
-        return result;
-    };
+        let result = (w / t) * 100
+        return result
+    }
     const handleHeroes = (heroes: Hero[]) => {
         if (heroes !== undefined) {
             const heroLine = heroes.slice(0, 5).map(hero => {
                 return (
                     <tr key={hero.hero_id}>
                         <td style={{ paddingLeft: "15px" }}>
-                            <div className="hero-img-name">
-                                <div className="hero-img">
+                            <div className='hero-img-name'>
+                                <div className='hero-img'>
                                     <img
                                         style={{
                                             height: "30px",
@@ -29,10 +24,10 @@ const Heroes = props => {
                                             paddingRight: "10px"
                                         }}
                                         src={handleImg(hero.hero_id)}
-                                        alt=""
+                                        alt=''
                                     />{" "}
                                 </div>
-                                <div className="hero-name">
+                                <div className='hero-name'>
                                     <b>{heroName(hero.hero_id)}</b> <br />
                                     {lastPlayed(hero.last_played)}
                                 </div>
@@ -58,17 +53,17 @@ const Heroes = props => {
                             </div>
                         </td>
                     </tr>
-                );
-            });
-            return heroLine;
+                )
+            })
+            return heroLine
         } else {
-            return;
+            return
         }
-    };
+    }
 
     if (props.load) {
         return (
-            <div className="heroes">
+            <div className='heroes'>
                 <table>
                     <thead>
                         <tr>
@@ -80,10 +75,10 @@ const Heroes = props => {
                     <tbody>{handleHeroes(props.heroes)}</tbody>
                 </table>
             </div>
-        );
+        )
     } else {
-        return <div />;
+        return <div />
     }
-};
+}
 
-export { Heroes };
+export { Heroes }
