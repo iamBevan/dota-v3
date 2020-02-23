@@ -27,39 +27,38 @@ const Profile = () => {
     const [heroes, setHeroes] = useState<Hero[]>([])
 
     useEffect(() => {
+        const fetchData = async (url?: string) => {
+            const response = await axios(
+                url
+                    ? `https://api.opendota.com/api/players/${id}/${url}`
+                    : `https://api.opendota.com/api/players/${id}/`
+            )
+            return response
+        }
         const playerList = async () => {
-            axios
-                .get(`https://api.opendota.com/api/players/${id}`)
-                .then(res => {
-                    setPlayer(res.data)
-                    setLoad(true)
-                    setCount(id)
-                })
+            let data = await fetchData()
+            setPlayer(data.data)
         }
         const playerWl = async () => {
-            axios
-                .get(`https://api.opendota.com/api/players/${id}/wl`)
-                .then(res => {
-                    setPlayerWl(res.data)
-                    setLoad(true)
-                })
+            let data = await fetchData("wl")
+            setPlayerWl(data.data)
+            setLoad(true)
         }
         const peerList = async () => {
-            axios
-                .get(`https://api.opendota.com/api/players/${id}/peers`)
-                .then(res => {
-                    setPeers(res.data)
-                    setLoad(true)
-                })
+            let data = await fetchData("peers")
+            setPeers(data.data)
+            setLoad(true)
         }
         const heroList = async () => {
-            axios
-                .get(`https://api.opendota.com/api/players/${id}/heroes`)
-                .then(res => {
-                    setHeroes(res.data)
-                    setLoad(true)
-                })
+            let data = await fetchData("heroes")
+            setHeroes(data.data)
+            setLoad(true)
         }
+
+        playerList()
+        playerWl()
+        peerList()
+        heroList()
 
         const cleanUp = () => {
             setPlayer(null)
@@ -69,10 +68,10 @@ const Profile = () => {
             console.log("homepage cleanup")
         }
 
-        playerList()
-        playerWl()
-        peerList()
-        heroList()
+        // playerList()
+        // playerWl()
+        // peerList()
+        // heroList()
 
         return cleanUp
     }, [id, setCount])
@@ -80,6 +79,7 @@ const Profile = () => {
     if (load && player !== null && playerWl !== null) {
         return (
             <div className='homepage-container'>
+                {console.log("player: ", player)}
                 <div className='player-container border-shadow'>
                     <section className='player'>
                         <h1>{player.profile.personaname}</h1>
