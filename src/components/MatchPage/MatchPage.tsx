@@ -140,4 +140,4 @@ const MatchPage = () => {
     }
 }
 
-export default MatchPage
+export { MatchPage }

@@ -159,4 +159,4 @@ const Matches = props => {
     }
 }
 
-export default Matches
+export { Matches }

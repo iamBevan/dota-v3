@@ -1,13 +1,13 @@
 import React, { useState } from "react"
 import { BrowserRouter, Route, Switch } from "react-router-dom"
-import Matches from "../Matches/Matches"
-import MatchPage from "../MatchPage/MatchPage"
+import { Matches } from "../Matches/Matches"
+import { MatchPage } from "../MatchPage/MatchPage"
 
 import { Header } from "../Header/Header"
 import { Footer } from "../Footer/Footer"
 import { PlayerSearch } from "../PlayerSearch/PlayerSearch"
-import Context from "../../Context"
-import Profile from "../Profile/Profile"
+import { Context } from "../../Context"
+import { Profile } from "../Profile/Profile"
 import styles from "./App.module.scss"
 
 const App = () => {
@@ -33,4 +33,4 @@ const App = () => {
     )
 }
 
-export default App
+export { App }

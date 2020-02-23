@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from "react"
-import Context from "../../Context"
+import { Context } from "../../Context"
 import { Link } from "react-router-dom"
 import axios from "axios"
 import styles from "./Profile.module.scss"
 import { useParams } from "react-router-dom"
 import { Player, PlayerWl } from "./interfaces"
 import { PercentageBar } from "../PercentageBar/PercentageBar"
-import Matches from "../Matches/Matches"
+import { Matches } from "../Matches/Matches"
 import { Peers } from "../Peers/Peers"
 import { Peer } from "./interfaces"
 import { winRate } from "../../utils/functions"
@@ -153,4 +153,4 @@ const Profile = () => {
     }
 }
 
-export default Profile
+export { Profile }
