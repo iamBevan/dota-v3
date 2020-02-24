@@ -65,18 +65,21 @@ const Profile: React.FC = () => {
             setLoad(false)
             setPeers([])
             setHeroes([])
-            console.log("homepage cleanup")
         }
 
         return cleanUp
     }, [id, setCount])
 
-    if (load && player !== null && playerWl !== null) {
-        return (
-            <div className='homepage-container'>
-                {console.log("player: ", player)}
-                <div className='player-container border-shadow'>
-                    <section className='player'>
+    return (
+        <div className={styles["homepage-container"]}>
+            <div
+                className={[
+                    styles["player-container"],
+                    [styles["border-shadow"]]
+                ].join(" ")}
+            >
+                {load && player && playerWl !== null && (
+                    <section className={styles["player"]}>
                         <h1>{player.profile.personaname}</h1>
                         <img
                             style={{ width: 90 }}
@@ -114,38 +117,37 @@ const Profile: React.FC = () => {
                             />
                         </div>
                     </section>
-                    <section className='rank'>
-                        <h1>Competitive Rank</h1>
-                        <img
-                            src='https://www.opendota.com/assets/images/dota2/rank_icons/rank_icon_8.png'
-                            alt=''
-                        />
-                    </section>
+                )}
+
+                <section className={styles["rank"]}>
+                    <h1>Competitive Rank</h1>
+                    <img
+                        src='https://www.opendota.com/assets/images/dota2/rank_icons/rank_icon_8.png'
+                        alt=''
+                    />
+                </section>
+            </div>
+            <div className={styles["main-container"]}>
+                <div className={styles["matches-container"]}>
+                    <Matches size={11} />
+                    <Link to={`/matches/${count}`}>
+                        <div style={{ textAlign: "center" }}>
+                            <b>More...</b>
+                        </div>
+                    </Link>
                 </div>
-                <div className='main-container'>
-                    <div className='matches-container'>
-                        <Matches size={11} />
-                        <Link to={`/matches/${count}`}>
-                            <div style={{ textAlign: "center" }}>
-                                <b>More...</b>
-                            </div>
-                        </Link>
-                    </div>
-                    <div className='sidebar-container'>
-                        <span className='sidebar-child'>
-                            <Peers peers={peers} load={load} />
-                        </span>
-                        <br />
-                        <span className='sidebar-child'>
-                            <Heroes heroes={heroes} load={load} />
-                        </span>
-                    </div>
+                <div className={styles["sidebar-container"]}>
+                    <span className={styles["sidebar-child"]}>
+                        <Peers peers={peers} load={load} />
+                    </span>
+                    <br />
+                    <span className='sidebar-child'>
+                        <Heroes heroes={heroes} load={load} />
+                    </span>
                 </div>
             </div>
-        )
-    } else {
-        return <div />
-    }
+        </div>
+    )
 }
 
 export { Profile }

@@ -1,5 +1,5 @@
 import React from "react"
-import styles from "./Hero.module.scss"
+import styles from "./Heroes.module.scss"
 import { Hero } from "./interface"
 import { handleImg, heroName, lastPlayed } from "../../utils/functions"
 import { PercentageBar } from "../PercentageBar/PercentageBar"
@@ -15,8 +15,8 @@ const Heroes = props => {
                 return (
                     <tr key={hero.hero_id}>
                         <td style={{ paddingLeft: "15px" }}>
-                            <div className='hero-img-name'>
-                                <div className='hero-img'>
+                            <div className={styles["hero-img-name"]}>
+                                <div className={styles["hero-img"]}>
                                     <img
                                         style={{
                                             height: "30px",
@@ -27,7 +27,7 @@ const Heroes = props => {
                                         alt=''
                                     />{" "}
                                 </div>
-                                <div className='hero-name'>
+                                <div className={styles["hero-name"]}>
                                     <b>{heroName(hero.hero_id)}</b> <br />
                                     {lastPlayed(hero.last_played)}
                                 </div>
@@ -63,7 +63,7 @@ const Heroes = props => {
 
     if (props.load) {
         return (
-            <div className='heroes'>
+            <div className={styles["heroes"]}>
                 <table>
                     <thead>
                         <tr>

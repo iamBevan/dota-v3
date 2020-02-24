@@ -15,18 +15,13 @@ const App = () => {
     return (
         <BrowserRouter>
             <Context.Provider value={{ count, setCount }}>
-                <section>
-                    {/* <Header /> */}
-                    <Switch>
-                        <Route path='/' exact component={PlayerSearch} />
-                        <Route path='/homepage/:id' children={<Profile />} />
-                        <Route path='/matches/:id' children={<Matches />} />
-                        <Route
-                            path='/match-page/:id'
-                            children={<MatchPage />}
-                        />
-                    </Switch>
-                </section>
+                {/* <Header /> */}
+                <Switch>
+                    <Route path='/' exact component={PlayerSearch} />
+                    <Route path='/homepage/:id' children={<Profile />} />
+                    <Route path='/matches/:id' children={<Matches />} />
+                    <Route path='/match-page/:id' children={<MatchPage />} />
+                </Switch>
                 {/* <Footer /> */}
             </Context.Provider>
         </BrowserRouter>
