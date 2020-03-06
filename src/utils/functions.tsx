@@ -2,12 +2,6 @@ import * as React from "react"
 import { heroData } from "../constants/heroData"
 import { gameMode } from "../constants/gameMode"
 import moment from "moment"
-import {
-    Player,
-    PlayerWl,
-    ProfilePlayer,
-    ProfilePlayerWl
-} from "../components/Profile/interfaces"
 
 export const playerTeam = (team: number) => {
     if (team < 128) {
