@@ -1,9 +1,9 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { Peer } from "../Profile/interfaces"
-import styles from "./Peers.module.scss"
-import { PercentageBar } from "../PercentageBar/PercentageBar"
-import { handleImg, lastPlayed, heroName } from "../../utils/functions"
+import { PercentageBar } from "../"
+import { lastPlayed } from "../../utils/functions"
+// import styles from "./Peers.module.scss"
 
 const Peers = props => {
     const winRate = (w: number, t: number) => {

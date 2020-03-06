@@ -2,7 +2,7 @@ import React from "react"
 import styles from "./Heroes.module.scss"
 import { Hero } from "./interface"
 import { handleImg, heroName, lastPlayed } from "../../utils/functions"
-import { PercentageBar } from "../PercentageBar/PercentageBar"
+import { PercentageBar } from "../"
 
 const Heroes = props => {
     const winRate = (w: number, t: number) => {

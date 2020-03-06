@@ -1,9 +1,15 @@
 import * as React from "react"
 import { heroData } from "../constants/heroData"
 import { gameMode } from "../constants/gameMode"
-import * as moment from "moment"
+import moment from "moment"
+import {
+    Player,
+    PlayerWl,
+    ProfilePlayer,
+    ProfilePlayerWl
+} from "../components/Profile/interfaces"
 
-export const playerTeam = team => {
+export const playerTeam = (team: number) => {
     if (team < 128) {
         return "Radiant"
     }
@@ -11,9 +17,19 @@ export const playerTeam = team => {
     return "Dire"
 }
 
-export const winRate = (w: number, l: number): number => {
-    let total = w + l
-    return (w / total) * 100
+export const winRate = (
+    wins: number | null | undefined,
+    losses: number | null | undefined
+): number => {
+    const result = (w, l) => {
+        let total = w + l
+        return (w / total) * 100
+    }
+
+    const calc =
+        (wins && losses) !== (null || undefined) ? result(wins, losses) : 0
+
+    return calc
 }
 
 export const handleImg = (heroId: number) => {
@@ -30,11 +46,11 @@ export const handleLaneImg = (laneId: number) => {
     return url
 }
 
-export const handleGameMode = (modeId: number) => {
+export const handleGameMode = (modeId: number): string => {
     return gameMode.modes[modeId].name
 }
 
-export const heroName = (id: number) => {
+export const heroName = (id: number): string => {
     return heroData.heroes[id].localized_name
 }
 
@@ -57,16 +73,16 @@ export const matchDuration = (time: number) => {
 
 export const matchResult = (team: number, win: boolean) => {
     if (team < 128 && win === true) {
-        return <div style={{ color: "rgb(118, 173, 121)" }}> Won Match </div>
+        return <div style={{ color: "rgb(118, 173, 121)" }}> Won Match ></div>
     }
     if (team < 128 && win === false) {
-        return <div style={{ color: "rgb(237, 94, 94)" }}> Lost Match </div>
+        return <div style={{ color: "rgb(237, 94, 94)" }}> Lost Match ></div>
     }
     if (team > 127 && win === true) {
-        return <div style={{ color: "rgb(237, 94, 94)" }}> Lost Match </div>
+        return <div style={{ color: "rgb(237, 94, 94)" }}> Lost Match ></div>
     }
 
-    return <div style={{ color: "rgb(118, 173, 121)" }}> Won Match </div>
+    return <div style={{ color: "rgb(118, 173, 121)" }}> Won Match ></div>
 }
 
 export const lastPlayed = (date: number) => {

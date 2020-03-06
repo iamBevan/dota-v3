@@ -79,7 +79,7 @@ const Matches = props => {
                             />{" "}
                             <div>
                                 <Link to={`/match-page/${match.match_id}`}>
-                                    <b>{heroName(match.hero_id)}</b>
+                                    <b>{heroName(match.hero_id)} ></b>
                                 </Link>{" "}
                                 <span>
                                     <img
@@ -95,7 +95,6 @@ const Matches = props => {
                     </td>
                     <td style={{ textAlign: "left" }}>
                         {matchResult(match.player_slot, match.radiant_win)}
-
                         <span>{partySize()}</span>
                     </td>
                     <td>

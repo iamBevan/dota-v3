@@ -29,7 +29,7 @@ const PlayerSearch = () => {
                     onChange={handleInputChange}
                     placeholder='Search by SteamID...'
                 />
-                <Link to={`/homepage/${inputChange}`}>
+                <Link to={`/profile/${inputChange}`}>
                     <button
                         className={styles[`landing__form__button`]}
                         type='submit'

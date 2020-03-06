@@ -4,24 +4,27 @@ import { Link } from "react-router-dom"
 import axios from "axios"
 import styles from "./Profile.module.scss"
 import { useParams } from "react-router-dom"
-import { Player, PlayerWl } from "./interfaces"
-import { PercentageBar } from "../PercentageBar/PercentageBar"
-import { Matches } from "../Matches/Matches"
-import { Peers } from "../Peers/Peers"
-import { Peer } from "./interfaces"
+import {
+    Player,
+    PlayerWl,
+    ProfilePlayer,
+    ProfilePlayerWl,
+    Peer,
+    SetCount
+} from "./interfaces"
+import { Matches, Peers, Heroes, PercentageBar } from "../"
 import { winRate } from "../../utils/functions"
-import { Heroes } from "../Heroes/Heroes"
 import { Hero } from "../Heroes/interface"
 
 const Profile: React.FC = () => {
     let { id } = useParams()
 
-    const [player, setPlayer] = useState<Player | null>(null)
+    const [player, setPlayer] = useState<ProfilePlayer<Player>>(null)
+    const [playerWl, setPlayerWl] = useState<ProfilePlayerWl<PlayerWl>>(null)
     const [load, setLoad] = useState(false)
-    const [playerWl, setPlayerWl] = useState<PlayerWl | null>(null)
     const { count, setCount } = useContext(Context) as {
         count: number
-        setCount: React.Dispatch<React.SetStateAction<string | undefined>>
+        setCount: React.Dispatch<React.SetStateAction<SetCount<string>>>
     }
     const [peers, setPeers] = useState<Peer[]>([])
     const [heroes, setHeroes] = useState<Hero[]>([])
@@ -35,30 +38,20 @@ const Profile: React.FC = () => {
             )
             return response
         }
+
         const playerList = async () => {
             let data = await fetchData()
+            let wlData = await fetchData("wl")
+            let peersData = await fetchData("peers")
+            let heroesData = await fetchData("heroes")
             setPlayer(data.data)
-        }
-        const playerWl = async () => {
-            let data = await fetchData("wl")
-            setPlayerWl(data.data)
-            setLoad(true)
-        }
-        const peerList = async () => {
-            let data = await fetchData("peers")
-            setPeers(data.data)
-            setLoad(true)
-        }
-        const heroList = async () => {
-            let data = await fetchData("heroes")
-            setHeroes(data.data)
+            setPlayerWl(wlData.data)
+            setPeers(peersData.data)
+            setHeroes(heroesData.data)
             setLoad(true)
         }
 
         playerList()
-        playerWl()
-        peerList()
-        heroList()
 
         const cleanUp = () => {
             setPlayer(null)
@@ -78,27 +71,28 @@ const Profile: React.FC = () => {
                     [styles["border-shadow"]]
                 ].join(" ")}
             >
-                {load && player && playerWl !== null && (
+                {load && (
                     <section className={styles["player"]}>
-                        <h1>{player.profile.personaname}</h1>
+                        <h1>{player?.profile.personaname}</h1>
                         <img
                             style={{ width: 90 }}
                             alt=''
-                            src={player.profile.avatarmedium}
+                            src={player?.profile.avatarmedium}
                         />
                         <br />
                         <br />
                         <span>
-                            <b>Wins:</b> {playerWl.win} |
+                            <b>Wins:</b> {playerWl?.win} |
                         </span>
                         <span>
                             {" "}
-                            <b>Losses</b>: {playerWl.lose} |
+                            <b>Losses</b>: {playerWl?.lose} |
                         </span>
                         <span>
                             {" "}
                             <b>Win Rate</b>:{" "}
-                            {winRate(playerWl.win, playerWl.lose).toFixed(2)}%
+                            {winRate(playerWl?.win, playerWl?.lose).toFixed(2)}
+                            %
                             <br />
                         </span>
                         <br />
@@ -111,8 +105,8 @@ const Profile: React.FC = () => {
                         >
                             <PercentageBar
                                 percentage={winRate(
-                                    playerWl.win,
-                                    playerWl.lose
+                                    playerWl?.win,
+                                    playerWl?.lose
                                 ).toFixed(0)}
                             />
                         </div>
