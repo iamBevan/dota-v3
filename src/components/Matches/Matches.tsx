@@ -79,7 +79,7 @@ const Matches = props => {
                             />{" "}
                             <div>
                                 <Link to={`/match-page/${match.match_id}`}>
-                                    <b>{heroName(match.hero_id)} ></b>
+                                    <span>{heroName(match.hero_id)} ></span>
                                 </Link>{" "}
                                 <span>
                                     <img

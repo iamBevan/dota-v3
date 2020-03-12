@@ -28,7 +28,7 @@ const Heroes = props => {
                                     />{" "}
                                 </div>
                                 <div className={styles["hero-name"]}>
-                                    <b>{heroName(hero.hero_id)}</b> <br />
+                                    <span>{heroName(hero.hero_id)}</span> <br />
                                     {lastPlayed(hero.last_played)}
                                 </div>
                             </div>

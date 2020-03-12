@@ -30,7 +30,7 @@ const Peers = props => {
                                 </div>
                                 <div className='peer-name'>
                                     <Link to={`/homepage/${peer.account_id}`}>
-                                        <b>{peer.personaname}</b>
+                                        <span>{peer.personaname}</span>
                                         <br />
                                     </Link>
                                     {lastPlayed(peer.last_played)}

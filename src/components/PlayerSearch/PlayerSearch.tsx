@@ -42,11 +42,11 @@ const PlayerSearch = () => {
                 <br />
                 Or try one of these: <br />
                 <span>
-                    <b>
+                    <span>
                         <br /> 329579
                         <br /> 160226
                         <br /> 2078533
-                    </b>
+                    </span>
                 </span>
                 {steamId}
             </span>

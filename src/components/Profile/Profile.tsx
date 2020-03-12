@@ -64,78 +64,81 @@ const Profile: React.FC = () => {
     }, [id, setCount])
 
     return (
-        <div className={styles["homepage-container"]}>
-            <div
-                className={[
-                    styles["player-container"],
-                    [styles["border-shadow"]]
-                ].join(" ")}
+        <div className={styles.homepageContainer}>
+            <section
+                className={[styles.playerContainer, [styles.borderShadow]].join(
+                    " "
+                )}
             >
                 {load && (
-                    <section className={styles["player"]}>
-                        <h1>{player?.profile.personaname}</h1>
-                        <img
-                            style={{ width: 90 }}
-                            alt=''
-                            src={player?.profile.avatarmedium}
-                        />
-                        <br />
-                        <br />
-                        <span>
-                            <b>Wins:</b> {playerWl?.win} |
-                        </span>
-                        <span>
-                            {" "}
-                            <b>Losses</b>: {playerWl?.lose} |
-                        </span>
-                        <span>
-                            {" "}
-                            <b>Win Rate</b>:{" "}
-                            {winRate(playerWl?.win, playerWl?.lose).toFixed(2)}
-                            %
-                            <br />
-                        </span>
-                        <br />
-                        <div
-                            style={{
-                                height: "2px",
-                                width: "500px",
-                                margin: "auto"
-                            }}
-                        >
-                            <PercentageBar
-                                percentage={winRate(
-                                    playerWl?.win,
-                                    playerWl?.lose
-                                ).toFixed(0)}
+                    <div className={styles.player}>
+                        <div className={styles.info}>
+                            <img
+                                style={{ width: 90 }}
+                                alt=''
+                                src={player?.profile.avatarmedium}
+                            />
+                            <div>
+                                <h1>{player?.profile.personaname}</h1>
+                                <span>
+                                    <span>Wins:</span> {playerWl?.win} |
+                                </span>
+                                <span>
+                                    {" "}
+                                    <span>Losses</span>: {playerWl?.lose} |
+                                </span>
+                                <span>
+                                    {" "}
+                                    <span>Win Rate</span>:{" "}
+                                    {winRate(
+                                        playerWl?.win,
+                                        playerWl?.lose
+                                    ).toFixed(2)}
+                                    %
+                                    <br />
+                                </span>
+                                <br />
+                                <div
+                                    style={{
+                                        height: "2px",
+                                        width: "500px",
+                                        margin: "auto"
+                                    }}
+                                >
+                                    <PercentageBar
+                                        percentage={winRate(
+                                            playerWl?.win,
+                                            playerWl?.lose
+                                        ).toFixed(0)}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.rank}>
+                            <h1>Competitive Rank</h1>
+                            <img
+                                src='https://www.opendota.com/assets/images/dota2/rank_icons/rank_icon_8.png'
+                                alt=''
                             />
                         </div>
-                    </section>
+                    </div>
                 )}
-
-                <section className={styles["rank"]}>
-                    <h1>Competitive Rank</h1>
-                    <img
-                        src='https://www.opendota.com/assets/images/dota2/rank_icons/rank_icon_8.png'
-                        alt=''
-                    />
-                </section>
-            </div>
-            <div className={styles["main-container"]}>
-                <div className={styles["matches-container"]}>
+            </section>
+            <div className={styles.mainContainer}>
+                <div className={styles.matchesContainer}>
                     <Matches size={11} />
                     <Link to={`/matches/${count}`}>
                         <div style={{ textAlign: "center" }}>
-                            <b>More...</b>
+                            <span>More...</span>
                         </div>
                     </Link>
                 </div>
-                <div className={styles["sidebar-container"]}>
-                    <span className={styles["sidebar-child"]}>
+                <div className={styles.sidebarContainer}>
+                    <span className={styles.sidebarChild}>
                         <Peers peers={peers} load={load} />
                     </span>
                     <br />
-                    <span className='sidebar-child'>
+                    <span className={styles.sidebarChild}>
                         <Heroes heroes={heroes} load={load} />
                     </span>
                 </div>
