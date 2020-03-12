@@ -1,60 +1,20 @@
-.homepage-container {
+.homepageContainer {
     // background-color: salmon;
     color: black;
     width: 1200px;
     margin: auto;
 
-    table {
-        border-collapse: collapse;
-        text-align: center;
-        margin: auto;
-        width: 100%;
-        -webkit-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.16);
-        -moz-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.16);
-        box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.16);
-
-        tbody {
-            margin: 0 0 20px 0;
-            background: #3a4750;
-        }
-
-        th {
-            font-weight: 500;
-            padding: 15px;
-            margin: 0;
-            background: #303841;
-            font-size: 13px;
-        }
-
-        tr {
-            background: #3a4750;
-            font-weight: 300;
-            font-size: 13px;
-            margin: 0;
-
-            &:hover {
-                background: #303841;
-                opacity: 0.9;
-            }
-        }
-
-        td {
-            padding: 15px 0 15px 0px;
-            margin: 0;
-        }
-    }
-
-    .border-shadow {
+    .borderShadow {
         -webkit-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.16);
         -moz-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.16);
         box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.16);
     }
 
-    .player-container {
+    .playerContainer {
         color: #fff;
         grid-area: header;
         display: flex;
-        background: #222831;
+        background: rgb(29, 42, 60);
 
         .player {
             width: 50%;
@@ -75,17 +35,17 @@
         }
     }
 
-    .main-container {
+    .mainContainer {
         margin-top: 10px;
         display: flex;
         width: 1200px;
 
-        .matches-container {
+        .matchesContainer {
             width: 65%;
             margin: 10px 10px 10px 0;
         }
 
-        .sidebar-container {
+        .sidebarContainer {
             width: 35%;
             margin: 10px 0 0 10px;
         }

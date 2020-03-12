@@ -19,7 +19,8 @@
     "react-transition-group": "^4.3.0",
     "rimraf": "^3.0.0",
     "styled-components": "^4.4.1",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.2",
+    "typescript-plugin-css-modules": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

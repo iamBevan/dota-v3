@@ -59,9 +59,9 @@ const MatchPage = () => {
                         </div>
                     </td>
                     <td style={{ textAlign: "left" }}>
-                        <b>
+                        <span>
                             {playerName(player.personaname, player.account_id)}
-                        </b>
+                        </span>
                     </td>
                     <td>{player.level}</td>
                     <td style={{ color: "rgb(118, 173, 121)" }}>
