@@ -17,7 +17,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.0",
     "react-transition-group": "^4.3.0",
-    "rimraf": "^3.0.0",
+    "rimraf": "^3.0.2",
     "styled-components": "^4.4.1",
     "typescript": "^3.8.3",
     "typescript-plugin-css-modules": "^2.2.0"
