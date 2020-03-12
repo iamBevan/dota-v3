@@ -65,61 +65,65 @@ const Profile: React.FC = () => {
 
     return (
         <div className={styles.homepageContainer}>
-            <div
+            <section
                 className={[styles.playerContainer, [styles.borderShadow]].join(
                     " "
                 )}
             >
                 {load && (
-                    <section className={styles.player}>
-                        <h1>{player?.profile.personaname}</h1>
-                        <img
-                            style={{ width: 90 }}
-                            alt=''
-                            src={player?.profile.avatarmedium}
-                        />
-                        <br />
-                        <br />
-                        <span>
-                            <span>Wins:</span> {playerWl?.win} |
-                        </span>
-                        <span>
-                            {" "}
-                            <span>Losses</span>: {playerWl?.lose} |
-                        </span>
-                        <span>
-                            {" "}
-                            <span>Win Rate</span>:{" "}
-                            {winRate(playerWl?.win, playerWl?.lose).toFixed(2)}
-                            %
-                            <br />
-                        </span>
-                        <br />
-                        <div
-                            style={{
-                                height: "2px",
-                                width: "500px",
-                                margin: "auto"
-                            }}
-                        >
-                            <PercentageBar
-                                percentage={winRate(
-                                    playerWl?.win,
-                                    playerWl?.lose
-                                ).toFixed(0)}
+                    <div className={styles.player}>
+                        <div className={styles.info}>
+                            <img
+                                style={{ width: 90 }}
+                                alt=''
+                                src={player?.profile.avatarmedium}
+                            />
+                            <div>
+                                <h1>{player?.profile.personaname}</h1>
+                                <span>
+                                    <span>Wins:</span> {playerWl?.win} |
+                                </span>
+                                <span>
+                                    {" "}
+                                    <span>Losses</span>: {playerWl?.lose} |
+                                </span>
+                                <span>
+                                    {" "}
+                                    <span>Win Rate</span>:{" "}
+                                    {winRate(
+                                        playerWl?.win,
+                                        playerWl?.lose
+                                    ).toFixed(2)}
+                                    %
+                                    <br />
+                                </span>
+                                <br />
+                                <div
+                                    style={{
+                                        height: "2px",
+                                        width: "500px",
+                                        margin: "auto"
+                                    }}
+                                >
+                                    <PercentageBar
+                                        percentage={winRate(
+                                            playerWl?.win,
+                                            playerWl?.lose
+                                        ).toFixed(0)}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.rank}>
+                            <h1>Competitive Rank</h1>
+                            <img
+                                src='https://www.opendota.com/assets/images/dota2/rank_icons/rank_icon_8.png'
+                                alt=''
                             />
                         </div>
-                    </section>
+                    </div>
                 )}
-
-                <section className={styles.rank}>
-                    <h1>Competitive Rank</h1>
-                    <img
-                        src='https://www.opendota.com/assets/images/dota2/rank_icons/rank_icon_8.png'
-                        alt=''
-                    />
-                </section>
-            </div>
+            </section>
             <div className={styles.mainContainer}>
                 <div className={styles.matchesContainer}>
                     <Matches size={11} />
