@@ -15,6 +15,7 @@ import {
 import { Matches, Peers, Heroes } from "../"
 import { Hero } from "../Heroes/interface"
 import { Summary } from "../summary/Summary"
+import { Performance } from "../Performance/Performance"
 
 const Profile: React.FC = () => {
     let { id } = useParams()
@@ -73,6 +74,8 @@ const Profile: React.FC = () => {
                     lose={playerWl?.lose}
                 />
             )}
+
+            <Performance />
 
             <div className={styles.mainContainer}>
                 <div className={styles.matchesContainer}>

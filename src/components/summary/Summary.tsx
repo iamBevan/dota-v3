@@ -13,9 +13,7 @@ interface Props {
 const Summary = (props: Props) => {
     return (
         <section
-            className={[styles.playerContainer, [styles.borderShadow]].join(
-                " "
-            )}
+            className={[styles.playerContainer, styles.borderShadow].join(" ")}
         >
             <div className={styles.player}>
                 <div className={styles.info}>

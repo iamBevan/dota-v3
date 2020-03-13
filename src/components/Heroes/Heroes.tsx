@@ -1,14 +1,15 @@
 import React from "react"
 import styles from "./Heroes.module.scss"
 import { Hero } from "./interface"
-import { handleImg, heroName, lastPlayed } from "../../utils/functions"
+import { handleImg, heroName, lastPlayed, winRate } from "../../utils/functions"
 import { PercentageBar } from "../"
 
-const Heroes = (props: { load: any; heroes: Hero[] }) => {
-    const winRate = (w: number, t: number) => {
-        let result = (w / t) * 100
-        return result
-    }
+interface Props {
+    load: boolean
+    heroes: Hero[]
+}
+
+const Heroes = (props: Props) => {
     const handleHeroes = (heroes: Hero[]) => {
         if (heroes !== undefined) {
             const heroLine = heroes.slice(0, 5).map(hero => {
