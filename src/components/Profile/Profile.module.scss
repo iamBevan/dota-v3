@@ -3,72 +3,30 @@
     color: black;
     width: 1200px;
     margin: auto;
-
-    .borderShadow {
-        -webkit-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.16);
-        -moz-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.16);
-        box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.16);
-    }
-
-    .playerContainer {
-        margin-top: 50px;
-        color: #fff;
-        grid-area: header;
-        display: flex;
-        background: rgb(29, 42, 60);
-        height: 200px;
-        font-weight: 200;
-
-        .h1 {
-            font-weight: 200;
-        }
-
-        .player {
-            width: 100%;
-            display: flex;
-
-            .info {
-                display: flex;
-                flex: 1;
-                // background-color: lightgreen;
-
-                img {
-                    width: 80px;
-                    height: 80px;
-                    align-self: center;
-                }
-            }
-
-            .rank {
-                font-size: 12px;
-                text-align: center;
-                flex: 1;
-
-                img {
-                    padding: 15px 0 0 0;
-                    width: 100px;
-                }
-            }
-        }
-    }
-
-    .mainContainer {
-        margin-top: 10px;
-        display: flex;
-        width: 1200px;
-
-        .matchesContainer {
-            width: 65%;
-            margin: 10px 10px 10px 0;
-        }
-
-        .sidebarContainer {
-            width: 35%;
-            margin: 10px 0 0 10px;
-        }
-    }
 }
 
 .red {
     background-color: red;
+}
+
+.matchesContainer {
+    width: 65%;
+    margin: 10px 10px 10px 0;
+}
+
+.sidebarContainer {
+    width: 35%;
+    margin: 10px 0 0 10px;
+}
+
+.borderShadow {
+    -webkit-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.16);
+    -moz-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.16);
+    box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.16);
+}
+
+.mainContainer {
+    margin-top: 10px;
+    display: flex;
+    width: 1200px;
 }

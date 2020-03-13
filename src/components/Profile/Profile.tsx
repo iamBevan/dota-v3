@@ -12,9 +12,9 @@ import {
     Peer,
     SetCount
 } from "./interfaces"
-import { Matches, Peers, Heroes, PercentageBar } from "../"
-import { winRate } from "../../utils/functions"
+import { Matches, Peers, Heroes } from "../"
 import { Hero } from "../Heroes/interface"
+import { Summary } from "../summary/Summary"
 
 const Profile: React.FC = () => {
     let { id } = useParams()
@@ -65,63 +65,15 @@ const Profile: React.FC = () => {
 
     return (
         <div className={styles.homepageContainer}>
-            <section
-                className={[styles.playerContainer, [styles.borderShadow]].join(
-                    " "
-                )}
-            >
-                {load && (
-                    <div className={styles.player}>
-                        <div className={styles.info}>
-                            <img alt='' src={player?.profile.avatarmedium} />
-                            <div>
-                                <h1 className={styles.h1}>
-                                    {player?.profile.personaname}
-                                </h1>
-                                <span>
-                                    <span>Wins:</span> {playerWl?.win} |
-                                </span>
-                                <span>
-                                    {" "}
-                                    <span>Losses</span>: {playerWl?.lose} |
-                                </span>
-                                <span>
-                                    {" "}
-                                    <span>Win Rate</span>:{" "}
-                                    {winRate(
-                                        playerWl?.win,
-                                        playerWl?.lose
-                                    ).toFixed(2)}
-                                    %
-                                    <br />
-                                </span>
-                                <br />
-                                <div
-                                    style={{
-                                        height: "2px",
-                                        width: "500px",
-                                        margin: "auto"
-                                    }}
-                                >
-                                    <PercentageBar
-                                        percentage={winRate(
-                                            playerWl?.win,
-                                            playerWl?.lose
-                                        ).toFixed(0)}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        <div className={styles.rank}>
-                            <h1 className={styles.h1}>Competitive Rank</h1>
-                            <img
-                                src='https://www.opendota.com/assets/images/dota2/rank_icons/rank_icon_8.png'
-                                alt=''
-                            />
-                        </div>
-                    </div>
-                )}
-            </section>
+            {load && (
+                <Summary
+                    avatarmedium={player?.profile.personaname}
+                    personaname={player?.profile.personaname}
+                    win={playerWl?.win}
+                    lose={playerWl?.lose}
+                />
+            )}
+
             <div className={styles.mainContainer}>
                 <div className={styles.matchesContainer}>
                     <Matches size={11} />
@@ -132,11 +84,11 @@ const Profile: React.FC = () => {
                     </Link>
                 </div>
                 <div className={styles.sidebarContainer}>
-                    <span className={styles.sidebarChild}>
+                    <span>
                         <Peers peers={peers} load={load} />
                     </span>
                     <br />
-                    <span className={styles.sidebarChild}>
+                    <span>
                         <Heroes heroes={heroes} load={load} />
                     </span>
                 </div>
