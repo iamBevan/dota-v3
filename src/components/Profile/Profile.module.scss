@@ -17,6 +17,11 @@
         display: flex;
         background: rgb(29, 42, 60);
         height: 200px;
+        font-weight: 200;
+
+        .h1 {
+            font-weight: 200;
+        }
 
         .player {
             width: 100%;
@@ -25,13 +30,12 @@
             .info {
                 display: flex;
                 flex: 1;
-                background-color: lightgreen;
+                // background-color: lightgreen;
 
                 img {
-                    padding: 15px 0 0 0;
                     width: 80px;
                     height: 80px;
-                    background-color: lightcyan;
+                    align-self: center;
                 }
             }
 

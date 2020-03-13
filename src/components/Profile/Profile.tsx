@@ -73,13 +73,11 @@ const Profile: React.FC = () => {
                 {load && (
                     <div className={styles.player}>
                         <div className={styles.info}>
-                            <img
-                                style={{ width: 90 }}
-                                alt=''
-                                src={player?.profile.avatarmedium}
-                            />
+                            <img alt='' src={player?.profile.avatarmedium} />
                             <div>
-                                <h1>{player?.profile.personaname}</h1>
+                                <h1 className={styles.h1}>
+                                    {player?.profile.personaname}
+                                </h1>
                                 <span>
                                     <span>Wins:</span> {playerWl?.win} |
                                 </span>
@@ -115,7 +113,7 @@ const Profile: React.FC = () => {
                             </div>
                         </div>
                         <div className={styles.rank}>
-                            <h1>Competitive Rank</h1>
+                            <h1 className={styles.h1}>Competitive Rank</h1>
                             <img
                                 src='https://www.opendota.com/assets/images/dota2/rank_icons/rank_icon_8.png'
                                 alt=''
