@@ -14,7 +14,7 @@ import {
 } from "./interfaces"
 import { Matches, Peers, Heroes } from "../"
 import { Hero } from "../Heroes/interface"
-import { Summary } from "../summary/Summary"
+import { Summary } from "../Summary/Summary"
 import { Performance } from "../Performance/Performance"
 
 const Profile: React.FC = () => {
